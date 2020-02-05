@@ -1,0 +1,41 @@
+SHOPPING	Shopping
+CONDOMÍNIO	Condomínio
+CONDOMINIO	Condomínio
+IGREJA	Igreja
+SINDICATO	Sindicato
+PREVI	Previdência
+ASSOCIAÇÃO	Associação
+FUNDAÇÃO	Fundação
+FEDERAÇÃO	Federação
+COOPERATIVA	Cooperativa
+INSTITUTO	Instituto
+CONSÓRCIO	Consórcio
+CONCESSIONÁRIA	Concessionária
+CONCESSIONARIA	Concessionária
+RODOVIAS	Concessionária
+AUTO PISTA	Concessionária
+COHAB	Autarquia/Empresa pública
+CDHU	Autarquia/Empresa pública
+METRÔ	Autarquia/Empresa pública
+CPTM	Autarquia/Empresa pública
+SABESP	Autarquia/Empresa pública
+SPOBRAS	Autarquia/Empresa pública
+DERSA	Autarquia/Empresa pública
+ESTRADAS DE RODAGEM	Autarquia/Empresa pública
+ESTRADAS E RODAGEM	Autarquia/Empresa pública
+EMTU	Autarquia/Empresa pública
+EMPRESA METROPOLITANA DE TRANSPORTES URBANOS	Autarquia/Empresa pública
+PETROBRÁS	Autarquia/Empresa pública
+PETROBRAS	Autarquia/Empresa pública
+ARRENDAMENTO	Instituição financeira
+BANCO 	Instituição financeira
+LEASING	Instituição financeira
+FINANC	Instituição financeira
+SEGUROS	Instituição financeira
+ESTADO DE SÃO PAULO	Estado
+ESTADO DE SAO PAULO	Estado
+FAZENDA DO ESTADO	Estado
+PREFEITURA	Estado
+MUNICIPALIDADE	Estado
+MUNICÍPIO	Estado
+MUNICIPIO	Estado

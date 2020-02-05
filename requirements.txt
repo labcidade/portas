@@ -1,0 +1,4 @@
+requests
+selenium
+beautifulsoup4
+pyqt5

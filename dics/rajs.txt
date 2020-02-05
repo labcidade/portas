@@ -1,0 +1,321 @@
+Arujá	1ª RAJ - Grande São Paulo
+Barueri	1ª RAJ - Grande São Paulo
+Carapicuíba	1ª RAJ - Grande São Paulo
+Cotia	1ª RAJ - Grande São Paulo
+Diadema	1ª RAJ - Grande São Paulo
+Embu das Artes	1ª RAJ - Grande São Paulo
+Embu-Guaçu	1ª RAJ - Grande São Paulo
+Ferraz de Vasconcelos	1ª RAJ - Grande São Paulo
+Guararema	1ª RAJ - Grande São Paulo
+Guarulhos	1ª RAJ - Grande São Paulo
+Itapecerica da Serra	1ª RAJ - Grande São Paulo
+Itapevi	1ª RAJ - Grande São Paulo
+Itaquaquecetuba	1ª RAJ - Grande São Paulo
+Jandira	1ª RAJ - Grande São Paulo
+Mairiporã	1ª RAJ - Grande São Paulo
+Mauá	1ª RAJ - Grande São Paulo
+Mogi das Cruzes	1ª RAJ - Grande São Paulo
+Osasco	1ª RAJ - Grande São Paulo
+Poá	1ª RAJ - Grande São Paulo
+Ribeirão Pires	1ª RAJ - Grande São Paulo
+Rio Grande da Serra	1ª RAJ - Grande São Paulo
+Santa Isabel	1ª RAJ - Grande São Paulo
+Santana de Parnaíba	1ª RAJ - Grande São Paulo
+Santo André	1ª RAJ - Grande São Paulo
+São Bernardo do Campo	1ª RAJ - Grande São Paulo
+São Caetano do Sul	1ª RAJ - Grande São Paulo
+SÃO PAULO	1ª RAJ - Grande São Paulo
+Suzano	1ª RAJ - Grande São Paulo
+Taboão da Serra	1ª RAJ - Grande São Paulo
+Vargem Grande Paulista	1ª RAJ - Grande São Paulo
+Andradina	2ª RAJ – Araçatuba
+Araçatuba	2ª RAJ – Araçatuba
+Auriflama	2ª RAJ – Araçatuba
+Bilac	2ª RAJ – Araçatuba
+Birigui	2ª RAJ – Araçatuba
+Buritama	2ª RAJ – Araçatuba
+Cafelândia	2ª RAJ – Araçatuba
+Getulina	2ª RAJ – Araçatuba
+Guararapes	2ª RAJ – Araçatuba
+Ilha Solteira	2ª RAJ – Araçatuba
+Jales	2ª RAJ – Araçatuba
+Lins	2ª RAJ – Araçatuba
+Mirandópolis	2ª RAJ – Araçatuba
+Palmeira DOeste	2ª RAJ – Araçatuba
+Penápolis	2ª RAJ – Araçatuba
+Pereira Barreto	2ª RAJ – Araçatuba
+Promissão	2ª RAJ – Araçatuba
+Santa Fé do Sul	2ª RAJ – Araçatuba
+Urânia	2ª RAJ – Araçatuba
+Valparaíso	2ª RAJ – Araçatuba
+Agudos	3ª RAJ - Bauru
+Avaré	3ª RAJ - Bauru
+Bariri	3ª RAJ - Bauru
+Barra Bonita	3ª RAJ - Bauru
+Bauru	3ª RAJ - Bauru
+Botucatu	3ª RAJ - Bauru
+Cerqueira César	3ª RAJ - Bauru
+Chavantes	3ª RAJ - Bauru
+Conchas	3ª RAJ - Bauru
+Dois Córregos	3ª RAJ - Bauru
+Duartina	3ª RAJ - Bauru
+Fartura	3ª RAJ - Bauru
+Ipauçu	3ª RAJ - Bauru
+Itaí	3ª RAJ - Bauru
+Itatinga	3ª RAJ - Bauru
+Jaú	3ª RAJ - Bauru
+Lençóis Paulista	3ª RAJ - Bauru
+Macatuba	3ª RAJ - Bauru
+Ourinhos	3ª RAJ - Bauru
+Paranapanema	3ª RAJ - Bauru
+Pederneiras	3ª RAJ - Bauru
+Piraju	3ª RAJ - Bauru
+Pirajuí	3ª RAJ - Bauru
+Piratininga	3ª RAJ - Bauru
+Santa Cruz do Rio Pardo	3ª RAJ - Bauru
+São Manuel	3ª RAJ - Bauru
+Taquarituba	3ª RAJ - Bauru
+Aguaí	4ª RAJ – Campinas
+Águas de Lindóia	4ª RAJ – Campinas
+Americana	4ª RAJ – Campinas
+Amparo	4ª RAJ – Campinas
+Araras	4ª RAJ – Campinas
+Artur Nogueira	4ª RAJ – Campinas
+Atibaia	4ª RAJ – Campinas
+Bragança Paulista	4ª RAJ – Campinas
+Brotas	4ª RAJ – Campinas
+Caieiras	4ª RAJ – Campinas
+Cajamar	4ª RAJ – Campinas
+Campinas	4ª RAJ – Campinas
+Campo Limpo Paulista	4ª RAJ – Campinas
+Capivari	4ª RAJ – Campinas
+Cerquilho	4ª RAJ – Campinas
+Conchal	4ª RAJ – Campinas
+Cordeirópolis	4ª RAJ – Campinas
+Cosmópolis	4ª RAJ – Campinas
+Espírito Santo do Pinhal	4ª RAJ – Campinas
+Francisco Morato	4ª RAJ – Campinas
+Franco da Rocha	4ª RAJ – Campinas
+Hortolândia	4ª RAJ – Campinas
+Itapira	4ª RAJ – Campinas
+Itatiba	4ª RAJ – Campinas
+Itirapina	4ª RAJ – Campinas
+Itupeva	4ª RAJ – Campinas
+Jaguariúna	4ª RAJ – Campinas
+Jarinu	4ª RAJ – Campinas
+Jundiaí / SP	4ª RAJ – Campinas
+Laranjal Paulista	4ª RAJ – Campinas
+Leme	4ª RAJ – Campinas
+Limeira	4ª RAJ – Campinas
+Louveira	4ª RAJ – Campinas
+Mogi-Guaçu	4ª RAJ – Campinas
+Mogi-Mirim	4ª RAJ – Campinas
+Monte Mor	4ª RAJ – Campinas
+Nazaré Paulista	4ª RAJ – Campinas
+Nova Odessa	4ª RAJ – Campinas
+Paulínia	4ª RAJ – Campinas
+Pedreira	4ª RAJ – Campinas
+Pinhalzinho	4ª RAJ – Campinas
+Piracaia	4ª RAJ – Campinas
+Piracicaba	4ª RAJ – Campinas
+Pirassununga	4ª RAJ – Campinas
+Porto Ferreira	4ª RAJ – Campinas
+Rio Claro	4ª RAJ – Campinas
+Rio das Pedras	4ª RAJ – Campinas
+Santa Bárbara DOeste	4ª RAJ – Campinas
+Santa Rita do Passa Quatro	4ª RAJ – Campinas
+São João da Boa Vista	4ª RAJ – Campinas
+São Pedro	4ª RAJ – Campinas
+Serra Negra	4ª RAJ – Campinas
+Socorro	4ª RAJ – Campinas
+Sumaré	4ª RAJ – Campinas
+Tietê	4ª RAJ – Campinas
+Valinhos	4ª RAJ – Campinas
+Vargem Grande do Sul	4ª RAJ – Campinas
+Várzea Paulista	4ª RAJ – Campinas
+Vila Mimosa	4ª RAJ – Campinas
+Vinhedo	4ª RAJ – Campinas
+Adamantina	5ª RAJ - Presidente Prudente
+Assis	5ª RAJ - Presidente Prudente
+Bastos	5ª RAJ - Presidente Prudente
+Cândido Mota	5ª RAJ - Presidente Prudente
+Dracena	5ª RAJ - Presidente Prudente
+Flórida Paulista	5ª RAJ - Presidente Prudente
+Gália	5ª RAJ - Presidente Prudente
+Garça	5ª RAJ - Presidente Prudente
+Iepê	5ª RAJ - Presidente Prudente
+Junqueirópolis	5ª RAJ - Presidente Prudente
+Lucélia	5ª RAJ - Presidente Prudente
+Maracaí	5ª RAJ - Presidente Prudente
+Marília	5ª RAJ - Presidente Prudente
+Martinópolis	5ª RAJ - Presidente Prudente
+Mirante do Paranapanema	5ª RAJ - Presidente Prudente
+Osvaldo Cruz	5ª RAJ - Presidente Prudente
+Pacaembu	5ª RAJ - Presidente Prudente
+Palmital	5ª RAJ - Presidente Prudente
+Panorama	5ª RAJ - Presidente Prudente
+Paraguaçu Paulista	5ª RAJ - Presidente Prudente
+Pirapozinho	5ª RAJ - Presidente Prudente
+Pompéia	5ª RAJ - Presidente Prudente
+Presidente Bernardes	5ª RAJ - Presidente Prudente
+Presidente Epitácio	5ª RAJ - Presidente Prudente
+Presidente Prudente	5ª RAJ - Presidente Prudente
+Presidente Venceslau	5ª RAJ - Presidente Prudente
+Quatá	5ª RAJ - Presidente Prudente
+Rancharia	5ª RAJ - Presidente Prudente
+Regente Feijó	5ª RAJ - Presidente Prudente
+Rosana	5ª RAJ - Presidente Prudente
+Santo Anastácio	5ª RAJ - Presidente Prudente
+Teodoro Sampaio	5ª RAJ - Presidente Prudente
+Tupã	5ª RAJ - Presidente Prudente
+Tupi Paulista	5ª RAJ - Presidente Prudente
+Altinópolis	6ª RAJ - Ribeirão Preto
+Américo Brasiliense	6ª RAJ - Ribeirão Preto
+Araraquara	6ª RAJ - Ribeirão Preto
+Batatais	6ª RAJ - Ribeirão Preto
+Borborema	6ª RAJ - Ribeirão Preto
+Brodowski	6ª RAJ - Ribeirão Preto
+Caconde	6ª RAJ - Ribeirão Preto
+Cajuru	6ª RAJ - Ribeirão Preto
+Casa Branca	6ª RAJ - Ribeirão Preto
+Cravinhos	6ª RAJ - Ribeirão Preto
+Descalvado	6ª RAJ - Ribeirão Preto
+Franca	6ª RAJ - Ribeirão Preto
+Guará	6ª RAJ - Ribeirão Preto
+Guariba	6ª RAJ - Ribeirão Preto
+Iacanga	6ª RAJ - Ribeirão Preto
+Ibaté	6ª RAJ - Ribeirão Preto
+Ibitinga	6ª RAJ - Ribeirão Preto
+Igarapava	6ª RAJ - Ribeirão Preto
+Ipuã	6ª RAJ - Ribeirão Preto
+Itápolis	6ª RAJ - Ribeirão Preto
+Ituverava	6ª RAJ - Ribeirão Preto
+Jaboticabal	6ª RAJ - Ribeirão Preto
+Jardinópolis	6ª RAJ - Ribeirão Preto
+Matão	6ª RAJ - Ribeirão Preto
+Miguelópolis	6ª RAJ - Ribeirão Preto
+Mococa	6ª RAJ - Ribeirão Preto
+Monte Alto	6ª RAJ - Ribeirão Preto
+Morro Agudo	6ª RAJ - Ribeirão Preto
+Nuporanga	6ª RAJ - Ribeirão Preto
+Orlândia	6ª RAJ - Ribeirão Preto
+Patrocínio Paulista	6ª RAJ - Ribeirão Preto
+Pedregulho	6ª RAJ - Ribeirão Preto
+Pirangi	6ª RAJ - Ribeirão Preto
+Pitangueiras	6ª RAJ - Ribeirão Preto
+Pontal	6ª RAJ - Ribeirão Preto
+Ribeirão Bonito	6ª RAJ - Ribeirão Preto
+Ribeirão Preto	6ª RAJ - Ribeirão Preto
+Santa Cruz das Palmeiras	6ª RAJ - Ribeirão Preto
+Santa Rosa de Viterbo	6ª RAJ - Ribeirão Preto
+São Carlos	6ª RAJ - Ribeirão Preto
+São Joaquim da Barra	6ª RAJ - Ribeirão Preto
+São José do Rio Pardo	6ª RAJ - Ribeirão Preto
+São Sebastião da Grama	6ª RAJ - Ribeirão Preto
+São Simão	6ª RAJ - Ribeirão Preto
+Serrana	6ª RAJ - Ribeirão Preto
+Sertãozinho	6ª RAJ - Ribeirão Preto
+Tambaú	6ª RAJ - Ribeirão Preto
+Taquaritinga	6ª RAJ - Ribeirão Preto
+Bertioga	7ª RAJ – Santos
+Cananéia	7ª RAJ – Santos
+Cubatão	7ª RAJ – Santos
+Eldorado	7ª RAJ – Santos
+Guarujá	7ª RAJ – Santos
+Iguape	7ª RAJ – Santos
+Itanhaém	7ª RAJ – Santos
+Itariri	7ª RAJ – Santos
+Jacupiranga	7ª RAJ – Santos
+Juquiá	7ª RAJ – Santos
+Miracatu	7ª RAJ – Santos
+Mongaguá	7ª RAJ – Santos
+Pariquera-Açu	7ª RAJ – Santos
+Peruíbe	7ª RAJ – Santos
+Praia Grande	7ª RAJ – Santos
+Registro	7ª RAJ – Santos
+Santos	7ª RAJ – Santos
+São Vicente	7ª RAJ – Santos
+Barretos	8ª RAJ - SJ Rio Preto
+Bebedouro	8ª RAJ - SJ Rio Preto
+Cardoso	8ª RAJ - SJ Rio Preto
+Catanduva	8ª RAJ - SJ Rio Preto
+Colina	8ª RAJ - SJ Rio Preto
+Estrela DOeste	8ª RAJ - SJ Rio Preto
+Fernandópolis	8ª RAJ - SJ Rio Preto
+General Salgado	8ª RAJ - SJ Rio Preto
+Guaíra	8ª RAJ - SJ Rio Preto
+Itajobi	8ª RAJ - SJ Rio Preto
+José Bonifácio	8ª RAJ - SJ Rio Preto
+Macaubal	8ª RAJ - SJ Rio Preto
+Mirassol	8ª RAJ - SJ Rio Preto
+Monte Aprazível	8ª RAJ - SJ Rio Preto
+Monte Azul Paulista	8ª RAJ - SJ Rio Preto
+Neves Paulista	8ª RAJ - SJ Rio Preto
+Nhandeara	8ª RAJ - SJ Rio Preto
+Nova Granada	8ª RAJ - SJ Rio Preto
+Novo Horizonte	8ª RAJ - SJ Rio Preto
+Olímpia	8ª RAJ - SJ Rio Preto
+Ouroeste	8ª RAJ - SJ Rio Preto
+Palestina	8ª RAJ - SJ Rio Preto
+Paulo de Faria	8ª RAJ - SJ Rio Preto
+Potirendaba	8ª RAJ - SJ Rio Preto
+Santa Adélia	8ª RAJ - SJ Rio Preto
+São José do Rio Preto	8ª RAJ - SJ Rio Preto
+Tabapuã	8ª RAJ - SJ Rio Preto
+Tanabi	8ª RAJ - SJ Rio Preto
+Urupês	8ª RAJ - SJ Rio Preto
+Viradouro	8ª RAJ - SJ Rio Preto
+Votuporanga	8ª RAJ - SJ Rio Preto
+Aparecida	9ª RAJ - SJ dos Campos
+Bananal	9ª RAJ - SJ dos Campos
+Caçapava	9ª RAJ - SJ dos Campos
+Cachoeira Paulista	9ª RAJ - SJ dos Campos
+Campos do Jordão	9ª RAJ - SJ dos Campos
+Caraguatatuba	9ª RAJ - SJ dos Campos
+Caraquatatuba	9ª RAJ - SJ dos Campos
+Cruzeiro	9ª RAJ - SJ dos Campos
+Cunha	9ª RAJ - SJ dos Campos
+Guaratinguetá	9ª RAJ - SJ dos Campos
+Ilhabela	9ª RAJ - SJ dos Campos
+Jacareí	9ª RAJ - SJ dos Campos
+Lorena	9ª RAJ - SJ dos Campos
+Paraibuna	9ª RAJ - SJ dos Campos
+Pindamonhangaba	9ª RAJ - SJ dos Campos
+Piquete	9ª RAJ - SJ dos Campos
+Queluz	9ª RAJ - SJ dos Campos
+Roseira	9ª RAJ - SJ dos Campos
+Salesópolis	9ª RAJ - SJ dos Campos
+Santa Branca	9ª RAJ - SJ dos Campos
+São Bento do Sapucaí	9ª RAJ - SJ dos Campos
+São José dos Campos	9ª RAJ - SJ dos Campos
+São Luiz do Paraitinga	9ª RAJ - SJ dos Campos
+São Sebastião	9ª RAJ - SJ dos Campos
+Taubaté	9ª RAJ - SJ dos Campos
+Tremembé	9ª RAJ - SJ dos Campos
+Ubatuba	9ª RAJ - SJ dos Campos
+Angatuba	10ª RAJ – Sorocaba
+Apiaí	10ª RAJ – Sorocaba
+Boituva	10ª RAJ – Sorocaba
+Buri	10ª RAJ – Sorocaba
+Cabreúva	10ª RAJ – Sorocaba
+Capão Bonito	10ª RAJ – Sorocaba
+Ibiúna	10ª RAJ – Sorocaba
+Indaiatuba	10ª RAJ – Sorocaba
+Itaberá	10ª RAJ – Sorocaba
+Itapetininga	10ª RAJ – Sorocaba
+Itapeva	10ª RAJ – Sorocaba
+Itaporanga	10ª RAJ – Sorocaba
+Itararé	10ª RAJ – Sorocaba
+Itu	10ª RAJ – Sorocaba
+Mairinque	10ª RAJ – Sorocaba
+Piedade	10ª RAJ – Sorocaba
+Pilar do Sul	10ª RAJ – Sorocaba
+Porangaba	10ª RAJ – Sorocaba
+Porto Feliz	10ª RAJ – Sorocaba
+Salto	10ª RAJ – Sorocaba
+Salto de Pirapora	10ª RAJ – Sorocaba
+São Miguel Arcanjo	10ª RAJ – Sorocaba
+São Roque	10ª RAJ – Sorocaba
+Sorocaba	10ª RAJ – Sorocaba
+Tatuí	10ª RAJ – Sorocaba
+Votorantim	10ª RAJ – Sorocaba

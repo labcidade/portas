@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="logoLab">
+    <file>zdETOxzh_400x400.jpg</file>
+  </qresource>
+  <qresource prefix="windowIcon">
+    <file>robot.png</file>
+  </qresource>
+</RCC>

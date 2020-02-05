@@ -1,0 +1,20 @@
+S/A	S/A
+S.A	S/A
+ ME 	Microempresa
+MICROEMPRESA	Microempresa
+MICRO EMPRE	Microempresa
+LTDA ME	Microempresa
+LTDA-ME	Microempresa
+LTDA - ME	Microempresa
+ -ME 	Microempresa
+LIMITADA ME	Microempresa
+LTDA	LTDA
+LIMITADA	LTDA
+C.N.P.J	CNPJ
+CNPJ	CNPJ
+ESPÓLIO	Espólio
+ESPOLIO	Espólio
+RG 	PF
+R.G	PF
+CPF	PF
+C.P.F	PF

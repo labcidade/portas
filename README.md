@@ -1,5 +1,5 @@
-# Robnada 0.0.1
-*Pacote em Python para web scraping de pesquisas no Banco de Sentenças do Tribunal de Justiça do Estado de São Paulo -- TJSP -- desenvolvido pela equipe do Laboratório Espaço Público e Direito à Cidade -- LabCidade -- da Faculdade de Arquitetura e Urbanismo da Universidade de São Paulo.*
+# LabCidade PORTAS
+*Pacote em Python para web scraping de pesquisas no Banco de Sentenças do Tribunal de Justiça do Estado de São Paulo - TJSP - desenvolvido pela equipe do Laboratório Espaço Público e Direito à Cidade - LabCidade - da Faculdade de Arquitetura e Urbanismo da Universidade de São Paulo.*
 
 Usando Python 3.6 ou superior, é possível instalá-lo em seu computador com o comando abaixo, desde que python esteja definido como variável ambiente:
 `>>> python -m pip install robnada`

@@ -4,6 +4,9 @@
 Usando Python 3.6 ou superior, é possível instalá-lo em seu computador com o comando abaixo, desde que python esteja definido como variável ambiente:
 `>>> python -m pip install robnada`
 
+## Estrutura
+A aplicação em python está organizada com a seguinte estrutura:
+
 ## Introdução
 Uma das frentes de atuação do Observatório de Remoções do Laboratório Espaço Público e Direito à Cidade da Faculdade de Arquitetura e Urbanismo da Universidade de São Paulo é o mapeamento e o acompanhamento dos processos de remoção em curso na Região Metropolitana de São Paulo, os quais que têm sido realizados continuamente por meio da inclusão, pelos(as) pesquisadores(as), de conflitos fundiários coletivos em uma plataforma de mapeamento, e da sua ampla divulgação. No âmbito do convênio do LabCidade - FAU/USP com a Escola Superior do Ministério Público do Estado de São Paulo, a proposta de obtenção de dados do Tribunal de Justiça de São Paulo visa a ampliação desse mapeamento, com a inclusão de resultados de processos judiciais que resultam em remoções forçadas como índice de processos de remoção ou ameaça.
 

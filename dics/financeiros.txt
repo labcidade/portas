@@ -1,0 +1,16 @@
+ITAU	Banco Itaú
+ITAÚ	Banco Itaú
+UNIBANCO	Banco Itaú
+BRADESCO	Banco Bradesco
+BANCO DO BRASIL	Banco do Brasil
+FINASA	Finasa
+SAFRA	Banco Safra
+SANTANDER	Banco Santander
+SOFISA	SOFISA
+BMG	BMG
+PANAMERICANO	Banco Panamericano
+RODOBENS	Banco Rodobens
+TRICURY	Tricury
+VOLKSWAGEN	Banco Volkswagen
+HSBC	HSBC
+BFB	BFB Leasing

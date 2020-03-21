@@ -1,0 +1,6 @@
+Plural	INVASORES
+Plural	INVASORAS
+Singular	INVASOR
+Impessoal	INVASÃO
+Impessoal	INVADID
+Impessoal	INVASAO

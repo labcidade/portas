@@ -1348,3 +1348,297 @@ JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14
 
 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
 
+1582844488436	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofile2uc9XD"
+1582844496900	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1582844499472	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1582844499472	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1582844499472	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1582844499472	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1582844545633	Marionette	INFO	Listening on port 51173
+1582844546125	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1582844597808	Marionette	INFO	Stopped listening on port 51173
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1582845269495	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofile5ALgiF"
+1582845271394	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1582845275939	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1582845275939	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1582845275939	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1582845275939	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: "Could not write session state file " (new Error("_initWorker called too early! Please read the session file from disk first.", "resource:///modules/sessionstore/SessionFile.jsm", 375)) "_initWorker/<@resource:///modules/sessionstore/SessionFile.jsm:375:15\n_initWorker@resource:///modules/sessionstore/SessionFile.jsm:368:12\n_postToWorker@resource:///modules/sessionstore/SessionFile.jsm:410:16\nwrite@resource:///modules/sessionstore/SessionFile.jsm:448:24\nwrite@resource:///modules/sessionstore/SessionFile.jsm:75:32\n_writeState@resource:///modules/sessionstore/SessionSaver.jsm:360:24\n_saveState@resource:///modules/sessionstore/SessionSaver.jsm:294:17\n_saveStateAsync@resource:///modules/sessionstore/SessionSaver.jsm:344:10\nsaveStateAsyncWhenIdle@resource:///modules/sessionstore/SessionSaver.jsm:191:14\ncallback@resource://gre/modules/Timer.jsm:125:16\n"
+1582845298799	Marionette	INFO	Listening on port 51620
+1582845300055	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x8000D,name=PBackgroundIDBDatabase::Msg_Invalidate) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x8000E,name=PBackgroundIDBDatabase::Msg_CloseAfterInvalidationComplete) Channel error: cannot send/recv
+
+[Parent 16288, Gecko_IOThread] WARNING: file z:/task_1581950252/build/src/ipc/chromium/src/base/process_util_win.cc, line 160
+[Parent 16288, Gecko_IOThread] WARNING: file z:/task_1581950252/build/src/ipc/chromium/src/base/process_util_win.cc, line 160
+[Parent 16288, Gecko_IOThread] WARNING: file z:/task_1581950252/build/src/ipc/chromium/src/base/process_util_win.cc, line 160
+1582845361431	Marionette	INFO	Stopped listening on port 51620
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1582847682534	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofilefMeNrG"
+1582847697910	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1582847703785	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1582847703785	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1582847703785	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1582847703786	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1582847776476	Marionette	INFO	Listening on port 51927
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1A0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
+1582847847470	Marionette	INFO	Stopped listening on port 51927
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1582847903326	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileoIAkbc"
+1582847906047	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1582847909436	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1582847909436	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1582847909436	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1582847909436	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1582847916657	Marionette	INFO	Listening on port 52007
+1582847917231	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1582848005934	Marionette	INFO	Stopped listening on port 52007
+[Parent 6124, Gecko_IOThread] WARNING: file z:/task_1581950252/build/src/ipc/chromium/src/base/process_util_win.cc, line 160
+1582848293649	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileh7X8Di"
+1582848297601	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1582848300482	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1582848300482	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1582848300482	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1582848300482	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+[Parent 3656, Gecko_IOThread] WARNING: file z:/task_1581950252/build/src/ipc/chromium/src/base/process_util_win.cc, line 160
+1582848319285	Marionette	INFO	Listening on port 52094
+1582848320127	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1582848373735	Marionette	INFO	Stopped listening on port 52094
+1582848431474	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofile11ES1Z"
+1582848433455	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1582848437506	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1582848437506	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1582848437506	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1582848437506	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: "Could not write session state file " (new Error("_initWorker called too early! Please read the session file from disk first.", "resource:///modules/sessionstore/SessionFile.jsm", 375)) "_initWorker/<@resource:///modules/sessionstore/SessionFile.jsm:375:15\n_initWorker@resource:///modules/sessionstore/SessionFile.jsm:368:12\n_postToWorker@resource:///modules/sessionstore/SessionFile.jsm:410:16\nwrite@resource:///modules/sessionstore/SessionFile.jsm:448:24\nwrite@resource:///modules/sessionstore/SessionFile.jsm:75:32\n_writeState@resource:///modules/sessionstore/SessionSaver.jsm:360:24\n_saveState@resource:///modules/sessionstore/SessionSaver.jsm:294:17\n_saveStateAsync@resource:///modules/sessionstore/SessionSaver.jsm:344:10\nsaveStateAsyncWhenIdle@resource:///modules/sessionstore/SessionSaver.jsm:191:14\ncallback@resource://gre/modules/Timer.jsm:125:16\n"
+1582848443424	Marionette	INFO	Listening on port 52168
+1582848443504	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1582848494932	Marionette	INFO	Stopped listening on port 52168
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1582849558591	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileLCqHve"
+1582849563171	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1582849565468	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1582849565469	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1582849565469	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1582849565469	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1582849569748	Marionette	INFO	Listening on port 52293
+1582849569932	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1582849735971	Marionette	INFO	Stopped listening on port 52293
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1582849962773	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofile0Hneoj"
+1582849963651	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1582849965855	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1582849965855	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1582849965855	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1582849965855	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1582849970352	Marionette	INFO	Listening on port 52363
+1582849970850	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1582849994002	Marionette	INFO	Stopped listening on port 52363
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584475910599	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileghJClT"
+1584475945300	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584475951847	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584475951847	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584475951847	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584475951847	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: "Could not write session state file " (new Error("_initWorker called too early! Please read the session file from disk first.", "resource:///modules/sessionstore/SessionFile.jsm", 375)) "_initWorker/<@resource:///modules/sessionstore/SessionFile.jsm:375:15\n_initWorker@resource:///modules/sessionstore/SessionFile.jsm:368:12\n_postToWorker@resource:///modules/sessionstore/SessionFile.jsm:410:16\nwrite@resource:///modules/sessionstore/SessionFile.jsm:448:24\nwrite@resource:///modules/sessionstore/SessionFile.jsm:75:32\n_writeState@resource:///modules/sessionstore/SessionSaver.jsm:360:24\n_saveState@resource:///modules/sessionstore/SessionSaver.jsm:294:17\n_saveStateAsync@resource:///modules/sessionstore/SessionSaver.jsm:344:10\nsaveStateAsyncWhenIdle@resource:///modules/sessionstore/SessionSaver.jsm:191:14\ncallback@resource://gre/modules/Timer.jsm:125:16\n"
+A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
+JavaScript error: resource://services-settings/RemoteSettingsClient.jsm, line 144: Error: Unknown callback
+[GFX1-]: WMF VPX decoder just crashed; hardware video will be disabled.
+[Parent 11256, Gecko_IOThread] WARNING: file z:/task_1581950252/build/src/ipc/chromium/src/base/process_util_win.cc, line 160
+JavaScript error: resource://gre/modules/osfile/osfile_async_front.jsm, line 426: Error: OS.File has been shut down. Rejecting post to DirectoryIterator_prototype_close
+1584476153734	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileE6c1bg"
+1584476159696	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584476165484	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584476165484	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584476165484	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584476165484	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: "Could not write session state file " (new Error("_initWorker called too early! Please read the session file from disk first.", "resource:///modules/sessionstore/SessionFile.jsm", 375)) "_initWorker/<@resource:///modules/sessionstore/SessionFile.jsm:375:15\n_initWorker@resource:///modules/sessionstore/SessionFile.jsm:368:12\n_postToWorker@resource:///modules/sessionstore/SessionFile.jsm:410:16\nwrite@resource:///modules/sessionstore/SessionFile.jsm:448:24\nwrite@resource:///modules/sessionstore/SessionFile.jsm:75:32\n_writeState@resource:///modules/sessionstore/SessionSaver.jsm:360:24\n_saveState@resource:///modules/sessionstore/SessionSaver.jsm:294:17\n_saveStateAsync@resource:///modules/sessionstore/SessionSaver.jsm:344:10\nsaveStateAsyncWhenIdle@resource:///modules/sessionstore/SessionSaver.jsm:191:14\ncallback@resource://gre/modules/Timer.jsm:125:16\n"
+1584476207900	Marionette	INFO	Listening on port 54233
+1584476208116	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1584476237849	Marionette	INFO	Stopped listening on port 54233
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584638375483	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileIQ6EcC"
+1584638387218	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584638391467	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584638391467	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584638391467	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584638391467	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: "Could not write session state file " (new Error("_initWorker called too early! Please read the session file from disk first.", "resource:///modules/sessionstore/SessionFile.jsm", 375)) "_initWorker/<@resource:///modules/sessionstore/SessionFile.jsm:375:15\n_initWorker@resource:///modules/sessionstore/SessionFile.jsm:368:12\n_postToWorker@resource:///modules/sessionstore/SessionFile.jsm:410:16\nwrite@resource:///modules/sessionstore/SessionFile.jsm:448:24\nwrite@resource:///modules/sessionstore/SessionFile.jsm:75:32\n_writeState@resource:///modules/sessionstore/SessionSaver.jsm:360:24\n_saveState@resource:///modules/sessionstore/SessionSaver.jsm:294:17\n_saveStateAsync@resource:///modules/sessionstore/SessionSaver.jsm:344:10\nsaveStateAsyncWhenIdle@resource:///modules/sessionstore/SessionSaver.jsm:191:14\ncallback@resource://gre/modules/Timer.jsm:125:16\n"
+1584638430042	Marionette	INFO	Listening on port 52829
+1584638430652	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1584638462071	Marionette	INFO	Stopped listening on port 52829
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584644123365	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileteNDKV"
+1584644136611	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584644142163	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584644142164	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584644142164	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584644142164	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584719280634	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileps8rLn"
+1584719285429	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584719289026	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584719289027	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584719289027	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584719289027	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1584719347124	Marionette	INFO	Listening on port 59219
+1584719401713	Marionette	INFO	Stopped listening on port 59219
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584719591193	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofileF4Slim"
+1584719592832	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584719597001	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584719597001	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584719597001	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584719597001	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: "Could not write session state file " (new Error("_initWorker called too early! Please read the session file from disk first.", "resource:///modules/sessionstore/SessionFile.jsm", 375)) "_initWorker/<@resource:///modules/sessionstore/SessionFile.jsm:375:15\n_initWorker@resource:///modules/sessionstore/SessionFile.jsm:368:12\n_postToWorker@resource:///modules/sessionstore/SessionFile.jsm:410:16\nwrite@resource:///modules/sessionstore/SessionFile.jsm:448:24\nwrite@resource:///modules/sessionstore/SessionFile.jsm:75:32\n_writeState@resource:///modules/sessionstore/SessionSaver.jsm:360:24\n_saveState@resource:///modules/sessionstore/SessionSaver.jsm:294:17\n_saveStateAsync@resource:///modules/sessionstore/SessionSaver.jsm:344:10\nsaveStateAsyncWhenIdle@resource:///modules/sessionstore/SessionSaver.jsm:191:14\ncallback@resource://gre/modules/Timer.jsm:125:16\n"
+1584719604897	Marionette	INFO	Listening on port 59318
+1584719605236	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+SourceActor threw an exception: [Exception... "Component returned failure code: 0x80470002 (NS_BASE_STREAM_CLOSED) [nsIInputStream.available]"  nsresult: "0x80470002 (NS_BASE_STREAM_CLOSED)"  location: "JS frame :: resource://devtools/shared/DevToolsUtils.js :: onResponse :: line 579"  data: no]
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:579:34
+onStopRequest@resource://gre/modules/NetUtil.jsm:128:18
+Line: 579, column: 0
+console.error: ({})
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 579: NS_BASE_STREAM_CLOSED: Component returned failure code: 0x80470002 (NS_BASE_STREAM_CLOSED) [nsIInputStream.available]
+1584720019213	Marionette	INFO	Stopped listening on port 59318
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584720106814	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofiled4Emz5"
+1584720108310	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584720113483	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584720113483	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584720113484	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584720113484	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1584720121087	Marionette	INFO	Listening on port 59399
+1584720121291	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+1584720167201	Marionette	INFO	Stopped listening on port 59399
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1584720226088	mozrunner::runner	INFO	Running command: "recursos/FirefoxPortable/App/Firefox/firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\pedro\\AppData\\Local\\Temp\\rust_mozprofilea8SyoJ"
+1584720226945	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1584720229914	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1584720229914	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1584720229914	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1584720229914	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: "Could not write session state file " (new Error("_initWorker called too early! Please read the session file from disk first.", "resource:///modules/sessionstore/SessionFile.jsm", 375)) "_initWorker/<@resource:///modules/sessionstore/SessionFile.jsm:375:15\n_initWorker@resource:///modules/sessionstore/SessionFile.jsm:368:12\n_postToWorker@resource:///modules/sessionstore/SessionFile.jsm:410:16\nwrite@resource:///modules/sessionstore/SessionFile.jsm:448:24\nwrite@resource:///modules/sessionstore/SessionFile.jsm:75:32\n_writeState@resource:///modules/sessionstore/SessionSaver.jsm:360:24\n_saveState@resource:///modules/sessionstore/SessionSaver.jsm:294:17\n_saveStateAsync@resource:///modules/sessionstore/SessionSaver.jsm:344:10\nsaveStateAsyncWhenIdle@resource:///modules/sessionstore/SessionSaver.jsm:191:14\ncallback@resource://gre/modules/Timer.jsm:125:16\n"
+1584720237036	Marionette	INFO	Listening on port 59479
+1584720237398	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 196: Error: Invalid autocomplete selectedIndex
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/jquery/jquery-1.3.2.js, line 2425: unreachable code after return statement
+JavaScript warning: https://esaj.tjsp.jus.br/cjpg/js/spw/spwConcatenado-4.3.3-14.js, line 7473: unreachable code after return statement
+1584720287553	Marionette	INFO	Stopped listening on port 59479
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+

@@ -1,0 +1,7 @@
+ESTADO DE SÃO PAULO	Estado de São Paulo
+ESTADO DE SAO PAULO	Estado de São Paulo
+FAZENDA DO ESTADO	Estado de São Paulo
+PREFEITURA	Município
+MUNICIPALIDADE	Município
+MUNICÍPIO	Município
+MUNICIPIO	Município

@@ -1,8 +1,7 @@
+# -*- coding: utf-8 -*-
 ### portas.py ###
 
-import sys
 import os
-import io
 import re
 import csv
 import zipfile
@@ -12,10 +11,8 @@ import ctypes
 import requests
 import datetime
 import requests
-import selenium
 import hashlib
 from zipfile import ZipFile, ZIP_DEFLATED
-from selenium import webdriver
 from bs4 import BeautifulSoup
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
@@ -70,7 +67,6 @@ def _template_ok(path):
 			assert d
 			return True
 	except:
-		print('Template inválido')
 		return False
 
 # função para ler dicionários
@@ -105,6 +101,7 @@ def _preparar_template(pf,pasta_dics):
 	try:
 		with zipfile.ZipFile(alvozip,'r') as file:
 			vars_zip = [x.replace('template/','') for x in file.namelist() if x.startswith('template/')]
+			info_zip = [x for x in file.infolist() if x.filename.startswith('template/')]
 			vars_zip.sort()
 			templates = os.listdir(pasta_dics)
 			rivais = [x for x in templates if x.startswith(dmeta['template'])]
@@ -117,72 +114,28 @@ def _preparar_template(pf,pasta_dics):
 			else:
 				sufixo = '_' + str(nrivais)
 			
-			print(dmeta['template'])
-			print(rivais)
 			if dmeta['template'] in rivais:
 				pasta_rival = pasta_dics+'\\'+dmeta['template']
 				vars_rivais = [x for x in os.listdir(pasta_rival)]
 				vars_rivais.sort()
-				if vars_zip == vars_rivais:
-					print('Template já existe!')
-				else:
-					print('Copiando template...')
+				if vars_zip != vars_rivais:
 					novo_template = pasta_dics+'\\'+dmeta['template']+sufixo
+					print(novo_template)
 					os.mkdir(novo_template)
-					for f in vars_zip:
-						n = 'template/' + f
-						file.extract(n,novo_template)
-					print('Template criado!')
+					for f in info_zip:
+						f.filename = os.path.basename(f.filename)
+						file.extract(f,novo_template)
 			else:
-				print('Copiando template...')
 				novo_template = pasta_dics+'\\'+dmeta['template']+sufixo
+				print(novo_template)
 				os.mkdir(novo_template)
-				for f in vars_zip:
-					n = 'template/' + f
-					file.extract(n,novo_template)
-				print('Template criado!')
+				for f in info_zip:
+					f.filename = os.path.basename(f.filename)
+					file.extract(f,novo_template)
 	
 	finally:
 		os.rename(alvozip,pf)
 		return dmeta['template']
-
-
-# abre o webdriver e encontra uma url
-def _achar_url():
-	browser = selenium.webdriver.Chrome(webdriverpath)
-	browser.get('https://esaj.tjsp.jus.br/cjpg/')
-	print("\nConfigure sua pesquisa na janela.\nCaso já possua a url de uma pesquisa configurada, abra-a no navegador")
-	print("Quando terminar, aperte enter")
-
-	# Pede configuração de pesquisa no browser
-	while True:
-		try:
-			input('>>> ')
-			browser.find_element_by_xpath("//*[@value='Consultar']").click()
-
-			break
-		except:
-			print('FECHE TODAS AS JANELAS DE SELEÇÃO NO NAVEGADOR ANTES DE CONTINUAR...')
-			continue
-
-	url = browser.current_url
-	browser.quit()
-	return url
-
-	# Ordena as datas em sequência ascendente
-	self.url = self.url.replace("ordenacao=DESC","ordenacao=ASC")
-
-# abre explorer para achar arquivo de extensão "ext"
-def _achar_arq(ext):
-	while True:
-		try:
-			alvo = askopenfilename(title='Selecione o arquivo')
-			assert alvo.endswith(ext)
-			break
-		except AssertionError:
-			print ('Arquivo não é do formato .{}'.format(ext))
-			continue
-	return alvo
 
 # encontra um arquivo portas e retorna caminho e dados
 def _achar_portas():
@@ -198,7 +151,6 @@ def _achar_portas():
 			meta = _obter_meta(alvozip)
 			break
 		except AssertionError:
-			print ('Arquivo não é do formato .portas')
 			continue
 		finally:
 			arqzip.close()
@@ -220,9 +172,23 @@ def _extrair_csv(pf,destino):
 		with zipfile.ZipFile(alvozip,'r') as zfile:
 			with open(destino, "wb") as file: 
 				file.write(zfile.read('data.csv'))
-	except:
-		return
+	finally:
+		os.rename(alvozip,pf)
 
+# conta os resultados de uma pesquisa
+def _contar_resultados(url_base):
+	try:
+		s = requests.Session()
+		r = s.get(url_base)
+		h = BeautifulSoup(r.content,'html.parser')
+		r2 = h.find_all('div',{'id':'resultados'})
+		assert len(r2) > 0
+		x = h.findAll('td',{'bgcolor':'#EEEEEE'})[-2].getText()
+		x = x.split()[-1]
+		meta = int(x)
+		return meta
+	except:
+		return 0
 
 # define erro de entrada
 class EntradaIncorreta(Exception):
@@ -257,8 +223,8 @@ CLASSE RELATÓRIO
 Objeto de reporte da pesquisa
 Utilizado na função executar
 '''
-def relatar(pesquisa,raspados=0):
-	indice = pesquisa.indice + raspados
+def relatar(pesquisa,registro=0):
+	indice = pesquisa.indice + registro
 	if pesquisa.dics:
 		template = pesquisa.dics
 	else:
@@ -272,11 +238,11 @@ def relatar(pesquisa,raspados=0):
 
 
 '''
-CLASSE ITEMRASPADO
+CLASSE ITEMREGISTRO
 Objeto unidade de dados
 Usado pela função _robo
 '''
-class itemraspado:
+class itemregistro:
 	def __init__(self,item_em_html):
 		self.dic = {}
 		self.dados = item_em_html.find_all("tr")
@@ -285,7 +251,7 @@ class itemraspado:
 		horario = datetime.datetime.now().isoformat()
 		dia = '/'.join(horario[:10].split('-')[::-1])
 		hora = datetime.datetime.now().isoformat()[11:19]
-		self.dic['Início raspagem'] = dia+' '+hora
+		self.dic['Hora registro'] = dia+' '+hora
 
 		for a in ["Processo","Classe","Assunto","Magistrado","Comarca","Foro","Vara","Data de Disponibilização"]:
 			self.dic[a] = ''
@@ -628,14 +594,13 @@ Pode ser configurado por parâmetros ou pelo método configurar()
 Utilizado na função cumprir
 '''
 def executar(pesquisa):
-	print('Iniciando execução')
+	print('[portas] Iniciando execução')
 	# variáveis de execução
 	tamanho_fila = pesquisa.ciclo//10
 	timeout = pesquisa.robos * 90	
 	contagem = ignorados = 0
 
 	# providencia nome do arquivo
-	print('Designando arquivos')
 	dir_out = os.path.dirname(pesquisa.arq)
 	basename = os.path.basename(pesquisa.arq)
 	rivais = os.listdir(dir_out)
@@ -675,14 +640,13 @@ def executar(pesquisa):
 		ctypes.windll.kernel32.SetFileAttributesW(csv_int, 2)
 
 	# define página de início
-	print('Configurando início')
 	i_pag = (pesquisa.indice//10)+1
 	pag1 = i_pag
 	i_inicio = pesquisa.indice%10
 	inicio = True
 	tarefas = queue.Queue()
 
-	# configura dicionários de raspagem
+	# configura dicionários de mineração
 	masterdic = {}
 	for d in os.listdir(_dics):
 		nome = d.replace('.txt','')
@@ -697,15 +661,15 @@ def executar(pesquisa):
 			mastercustom[nome] = d
 	else:
 		mastercustom = None
-	print ('Dicionários prontos!')
 
 	'''
 	FUNÇÃO _ROBO
 	Componente de multiprocessamento
 	Utilizada internamente na função cumprir
 	'''
-	def _robo(tarefas,matriz,parciais,cadeado,cadeado2):
+	def _robo(tarefas,matriz,parciais,cadeado,cadeado2,cod):
 		bandeira = False
+		prefixo = '[portas._robo #{}] '.format(str(cod+1))
 		while not tarefas.empty():
 			tarefa = tarefas.get()
 			partida = datetime.datetime.now()
@@ -724,7 +688,7 @@ def executar(pesquisa):
 
 			try:
 				# solicita dados de mudança de página
-				ts = 'Acessando página '+str(tarefa)+'...'
+				ts = prefixo+'Acessando página '+str(tarefa)+'\t'
 				print(ts)
 				while True:
 					try:
@@ -746,7 +710,8 @@ def executar(pesquisa):
 
 				# checa se página tem conteúdo
 				if type(itens_na_pagina) != list:
-					print('\nO servidor levou tempo demais para responder. A raspagem será terminada em breve.\n')
+					ts = prefixo+'\nO servidor levou tempo demais para responder. A execução será terminada em breve.\n'
+					print(ts)
 					cadeado2.acquire()
 					parciais.append('terminar')
 					cadeado2.release()
@@ -755,7 +720,7 @@ def executar(pesquisa):
 
 				# checa se página tem conteúdo
 				if len(itens_na_pagina) == 0:
-					ts = 'Página '+str(tarefa)+' vazia!'
+					ts = prefixo+'Página '+str(tarefa)+' vazia!'
 					print(ts)
 					bandeira = True
 					continue
@@ -764,10 +729,10 @@ def executar(pesquisa):
 				if tarefa == pag1:
 					itens_na_pagina = itens_na_pagina[i_inicio:]
 
-				# loop de raspagem dos itens na página
+				# loop de mineração dos itens na página
 				for itemhtml in itens_na_pagina:
 					try:
-						u = itemraspado(itemhtml)
+						u = itemregistro(itemhtml)
 
 						u.partes()
 						u.buscaralvo('Razão parte 1', masterdic['razao'], u.parte1)
@@ -814,7 +779,7 @@ def executar(pesquisa):
 						matriz.append(u.dic)
 						cadeado.release()
 
-					# ignora item se houver erro na raspagem
+					# ignora item se houver erro na execução
 					except:
 						cadeado2.acquire()
 						parciais.append('ignorado')
@@ -827,7 +792,7 @@ def executar(pesquisa):
 				cadeado2.acquire()
 				parciais.append('pagina')
 				cadeado2.release()
-				ts = 'Página '+str(tarefa)+' raspada!'
+				ts = prefixo+'Página '+str(tarefa)+' registrada!\t'
 				print(ts)
 					
 			except:
@@ -843,7 +808,7 @@ def executar(pesquisa):
 		c = 1
 		while True:
 			if pesquisa.limite and contagem >= pesquisa.limite:
-				print('Pesquisa chegou ao limite!\n')
+				print('[portas] Pesquisa chegou ao limite!\n')
 				break
 
 			matriz = []
@@ -851,53 +816,50 @@ def executar(pesquisa):
 			cadeado_A = threading.Lock()
 			cadeado_B = threading.Lock()
 
-			print('Iniciando raspagem do ciclo de páginas',str(c))
+			print('[portas] Iniciando execução do ciclo',str(c))
 
 			for pag in range(i_pag,i_pag+tamanho_fila):
 				tarefas.put(pag)
 
 			# distribui trabalho para os estagiários
-			print('Distribuindo tarefas...\n')
 			for a in range(pesquisa.robos):
-				trabalho = threading.Thread(target=_robo,args=(tarefas,matriz,parciais,cadeado_A,cadeado_B))
+				trabalho = threading.Thread(target=_robo,args=(tarefas,matriz,parciais,cadeado_A,cadeado_B,a))
 				trabalho.daemon = True
 				trabalho.start()
 
 			tarefas.join()
-			print('Juntando tarefas...\n')
+			print('[portas] Juntando tarefas...\n')
 
 			# analisa continuação da execução
 			if 'terminar' in parciais:
-				print('Um erro inesperado ocorreu. Fechando a pesquisa...')
+				print('[portas] Um erro inesperado ocorreu. Fechando a pesquisa...')
 				break
 
 			if parciais.count('erroavancado') > 0.9 * parciais.count('contagem'):
-				print('A busca avançada não retornou os resultados esperados!')
-				print('Finalizando pesquisa...')
+				print('[portas] A busca avançada não retornou os resultados esperados!')
+				print('[portas] Finalizando pesquisa...')
 				break
 
 			# limpa matriz de resultados
 			matriz = [x for x in matriz if type(x) is dict]
 			chaves = matriz[0].keys()
-			print('Matriz ok!')
+			print('[portas] Matriz ok!')
 
 			# cria arquivos se for início de execução
 			if inicio and pesquisa.retomada==False:
-				print('É início!')
-
 				with open(csv_int, 'w', encoding = "utf-8", newline='') as saida:
 					dict_writer = csv.DictWriter(saida,chaves,delimiter='|')
 					dict_writer.writeheader()
 				ctypes.windll.kernel32.SetFileAttributesW(csv_int, 2)
-			print('Despacho criado!')
+				print('[portas] Despacho criado!')
 
 			# Salva os dados no arquivo de saída
 			with open(csv_int, 'a', encoding = "utf-8",newline='') as saida:
 				dict_writer = csv.DictWriter(saida,chaves,delimiter='|')
 				dict_writer.writerows(matriz)
-			print('Dados anexados!')
+			print('[portas] Dados anexados ao despacho!')
 
-			print(len(matriz),"processos raspados e salvos!\n")
+			print('[portas]',len(matriz),"processos salvos!\n")
 			inicio = False
 			ignorados += parciais.count('ignorado')
 			pesquisa.ignorados += ignorados
@@ -905,7 +867,7 @@ def executar(pesquisa):
 			i_pag += parciais.count('pagina')
 
 			if 'bandeira' in parciais:
-				print('TODOS OS DADOS DISPONÍVEIS FORAM RASPADOS!')
+				print('[portas] TODOS OS DADOS DISPONÍVEIS FORAM RASPADOS!')
 				break
 
 			yield contagem
@@ -913,12 +875,11 @@ def executar(pesquisa):
 
 	finally:
 		if inicio:
-			print('Nenhum item foi raspado!')
+			print('[portas] Nenhum item foi registrado!')
 		# salva o arquivo de metadados
 		relato = relatar(pesquisa,contagem)
 		with open(txt_out,'w',encoding='utf-8') as relatorio:
 			relatorio.write(relato)
-			print('O relatório da pesquisa foi salvo\n')
 		# desoculta arquivos
 		ctypes.windll.kernel32.SetFileAttributesW(csv_int, 128)
 
@@ -940,8 +901,8 @@ def executar(pesquisa):
 		os.rename(csv_int, csv_out)
 		os.rename(zip_out, portas_out)
 
-		# Dá o aviso de finalização da raspagem
-		print("Raspagem finalizada!")
-		print("Itens registrados:", contagem - ignorados)
-		print("Itens ignorados:", ignorados)
-		print("Itens já raspados na pesquisa:",pesquisa.indice + contagem)
+		# Dá o aviso de finalização da execução
+		print("[portas] Raspagem finalizada!")
+		print("         Itens registrados:", contagem - ignorados)
+		print("         Itens ignorados:", ignorados)
+		print("         Itens já registrados na pesquisa:",pesquisa.indice + contagem)

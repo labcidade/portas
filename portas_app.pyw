@@ -1,21 +1,14 @@
 #!/usr/bin/env python3.7
+# -*- coding: utf-8 -*-
+
 ### portas_app.py ###
 
 # importa módulos
 import sys
 import os
-import csv
-import requests
 import time
 import shutil
 from selenium import webdriver
-from dbfread import DBF
-from string import Template
-from io import StringIO
-from zipfile import ZipFile, ZIP_DEFLATED
-from tkinter import Tk
-from tkinter.filedialog import askopenfilenames, askdirectory
-from bs4 import BeautifulSoup
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 
 # define a pasta local
@@ -34,7 +27,7 @@ esaj = 'https://esaj.tjsp.jus.br/cjpg/'
 qtCreatorFile = 'gui/portas.ui'
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
 
-# thread de raspagem, separado da interface
+# thread de execução, separado da interface
 class progressThread(QtCore.QThread):
 	progress_update = QtCore.pyqtSignal(int)
 
@@ -46,7 +39,6 @@ class progressThread(QtCore.QThread):
 		while True:
 			try:
 				tot = next(self.gen)
-				print(tot)
 				self.progress_update.emit(tot)
 				time.sleep(0.25)
 				continue
@@ -72,6 +64,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.dic_desc.hide()
 		self.d = {}
 		self.anterior = None
+		self.retomada = False
 
 		renome = QtCore.QRegExp('[^/:?|<>*"]{1,}')
 		validanome = QtGui.QRegExpValidator(renome)
@@ -91,7 +84,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.isDics.stateChanged.connect(self.ativar_templates)
 		self.isLimite.stateChanged.connect(self.ativar_limite)
 		self.isCustom.stateChanged.connect(self.ativar_custom)
-		self.raspar_dics.currentTextChanged.connect(self.resumir_template)
+		self.min_dics.currentTextChanged.connect(self.resumir_template)
 
 	def checar(self):
 		try:
@@ -100,10 +93,10 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			assert len(self.pesquisa_url.text()) > 0
 			assert self.pesquisa_url.text().startswith(esaj)
 			assert len(self.pesquisa_url.text()) > len(esaj)
-			self.raspar.setEnabled(True)
+			self.fazer.setEnabled(True)
 
 		except AssertionError:
-			self.raspar.setEnabled(False)
+			self.fazer.setEnabled(False)
 			self.sucesso.hide()
 			self.erroUrl.hide()
 			pass
@@ -149,10 +142,10 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 	def resumir_template(self):
 		self.dic_desc.clear()
 		if self.isDics.isChecked() and\
-			len(self.raspar_dics.currentText())>0:
+			len(self.min_dics.currentText())>0:
 			self.dic_desc.show()
 			ltexto = []
-			tpath = _templates_dir + '/' + self.raspar_dics.currentText()
+			tpath = _templates_dir + '/' + self.min_dics.currentText()
 			for file in os.listdir(tpath):
 				limpo = file.replace('.txt','')
 				ltexto.append(limpo)
@@ -169,7 +162,6 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			nome = os.path.basename(pasta)
 			sinal = portas._template_ok(pasta)
 			assert sinal
-			print('Criando template...')
 			destino = _templates_dir+'/'+nome
 			if os.path.isdir(destino):
 				odics = os.listdir(pasta)
@@ -177,7 +169,6 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 				ddics = os.listdir(destino)
 				ddics.sort()
 				if ddics == odics:
-					print('Template já existe')
 					return
 				else:
 					rivais = [x for x in templates if x.startswith(nome)]
@@ -191,24 +182,25 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			shutil.copytree(pasta,destino)
 			templates.append(nome)
 			self.ativar_templates()
-			self.raspar_dics.setCurrentText(nome)
-			print('Template criado!')
+			self.min_dics.setCurrentText(nome)
 		except:
-			print("Impossível criar template")
 			return
 		
 	def ativar_templates(self):
 		if self.isDics.isChecked():
 			self.labelDics.setEnabled(True)
-			self.raspar_dics.setEnabled(True)
-			self.raspar_dics.clear()
-			self.raspar_dics.addItems(templates)
+			self.min_dics.setEnabled(True)
+			self.min_dics.clear()
+			self.min_dics.addItems(templates)
 			self.resumir_template()
-			self.novo_template.setEnabled(True)
+			if self.retomada == True:
+				self.novo_template.setEnabled(False)
+			else:
+				self.novo_template.setEnabled(True)
 		else:
 			self.labelDics.setEnabled(False)
-			self.raspar_dics.setEnabled(False)
-			self.raspar_dics.clear()
+			self.min_dics.setEnabled(False)
+			self.min_dics.clear()
 			self.resumir_template()
 			self.novo_template.setEnabled(False)
 
@@ -255,12 +247,13 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.pesquisa_url.setEnabled(True)
 		self.browse_url.setEnabled(True)
 		self.isDics.setEnabled(True)
-		self.raspar_dics.setEnabled(False)
+		self.min_dics.setEnabled(False)
 		self.labelDics.setEnabled(False)
 		self.ativar_configs()
 
 	def retomarpesquisa(self):
 		self.reset()
+		t = None
 		self.retomada = True
 		self.novap.setChecked(False)
 		self.retomarp.setChecked(True)
@@ -279,13 +272,19 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		if self.d['template'] != '*':
 			self.isDics.setChecked(True)
 			t = portas._preparar_template(self.anterior,_templates_dir)
+			if t not in templates:
+				templates.append(t)
 			self.ativar_templates()
-			self.raspar_dics.setCurrentText(t)
+			self.min_dics.setCurrentText(t)
 
+		self.pesquisa_arq.clear()
+		locatual = os.path.dirname(self.anterior)
+		self.pesquisa_arq.insert(locatual)
 		self.pesquisa_nome.clear()
 		self.pesquisa_nome.insert(self.d['nome'])
 		self.pesquisa_url.clear()
 		self.pesquisa_url.insert(self.d['url'])
+		self.checar()
 
 		self.labelNome.setEnabled(False)
 		self.labelURL.setEnabled(False)
@@ -293,11 +292,66 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.pesquisa_url.setEnabled(False)
 		self.browse_url.setEnabled(False)
 		self.isDics.setEnabled(False)
-		self.raspar_dics.setEnabled(False)
+		self.min_dics.setEnabled(False)
 		self.labelDics.setEnabled(False)
 
 	def extrairpesquisa(self):
 		self.reset()
+		self.novap.setChecked(False)
+		self.retomarp.setChecked(False)
+		self.box_pesquisa.setEnabled(True)
+		self.labelSaida.setEnabled(True)
+		self.pesquisa_arq.setEnabled(True)
+		self.browse_arq.setEnabled(True)
+		self.novo_template.setEnabled(False)
+		self.fazer.clicked.disconnect(self.executar)
+		self.fazer.clicked.connect(self.extrairpesquisa2)
+
+		try:
+			self.anterior, self.d = portas._achar_portas()
+			assert self.anterior
+		except:
+			self.reset()
+			return
+
+		self.pesquisa_arq.clear()
+		locatual = os.path.dirname(self.anterior)
+		self.pesquisa_arq.insert(locatual)
+		self.pesquisa_nome.clear()
+		self.pesquisa_nome.insert(self.d['nome'])
+		self.pesquisa_url.clear()
+		self.pesquisa_url.insert(self.d['url'])
+		if self.d['template'] != '*':
+			self.min_dics.clear()
+			self.min_dics.addItem(self.d['template'])
+			self.min_dics.setCurrentText(self.d['template'])
+		self.fazer.setText('Extrair')
+		self.fazer.setEnabled(True)
+
+	def extrairpesquisa2(self):
+		self.fazer.setChecked(False)
+		self.fazer.setEnabled(False)
+		dir_out = self.pesquisa_arq.text()
+		basename = self.pesquisa_nome.text() + '_resultados'
+
+		rivais = os.listdir(dir_out)
+		csv_rivais = [x.replace('.csv','') \
+			for x in rivais if x.endswith('.csv')]
+		csv_rivais = [x for x in csv_rivais\
+			if x.startswith(basename) and (len(basename)==(len(x)-4)\
+			or len(basename)==(len(x)-5))]
+		lc = len(csv_rivais)
+		if basename + '.csv' in os.listdir(dir_out):
+			lc += 1
+		
+		if lc == 0:
+			sufixo = '.csv'
+		else:
+			sufixo = ' ({}).csv'.format(str(lc))
+		nome_out = dir_out + '\\' + basename + sufixo
+		
+		portas._extrair_csv(self.anterior,nome_out)
+		self.finalizar()
 
 	def reset(self):
 		self.sucesso.hide()
@@ -306,6 +360,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.barraProgresso.setValue(0)
 		self.novap.setEnabled(True)
 		self.retomarp.setEnabled(True)
+		self.extrairp.setEnabled(True)
 		self.novap.setChecked(False)
 		self.retomarp.setChecked(False)
 		self.pesquisa_nome.clear()
@@ -313,14 +368,20 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.pesquisa_url.clear()
 		self.isCompleta.setChecked(False)
 		self.isDics.setChecked(False)
+		self.min_dics.clear()
 		self.isLimite.setChecked(False)
 		self.isCustom.setChecked(False)
 		self.box_pesquisa.setEnabled(False)
 		self.box_config.setEnabled(False)
-		self.raspar.clicked.connect(self.executar)
-		self.raspar.setText('Iniciar')
-		self.raspar.setCheckable(False)
-		self.raspar.setEnabled(False)
+		try:
+			self.fazer.clicked.disconnect()
+		except:
+			pass
+		self.fazer.clicked.connect(self.executar)
+		self.fazer.setText('Iniciar')
+		self.fazer.setCheckable(False)
+		self.fazer.setChecked(False)
+		self.fazer.setEnabled(False)
 		self.pesquisa_limite.setValue(0)
 		self.nrobos.setValue(10)
 		self.nciclo.setValue(500)
@@ -336,19 +397,22 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.progresso.setText(tp)
 
 	def finalizar(self):
+		try:
+			self.thread_progresso.wait()
+			self.thread_progresso.terminate()
+		except:
+			pass
 		self.reset()
-		self.raspar.clicked.connect(self.executar)
 		self.novap.setChecked(False)
 		self.retomarp.setChecked(False)
-		self.novap.setEnabled(False)
-		self.retomarp.setEnabled(False)
-		self.extrairp.setEnabled(False)
 		self.sucesso.show()
 
-	def executar (self):
+	def executar(self):
 		print('Começando a execução')
-		self.raspar.setChecked(False)
-		self.raspar.setEnabled(False)
+		self.fazer.clicked.disconnect(self.executar)
+		time.sleep(1)
+		self.fazer.setChecked(False)
+		self.fazer.setEnabled(False)
 		self.novap.setEnabled(False)
 		self.retomarp.setEnabled(False)
 		self.extrairp.setEnabled(False)
@@ -357,39 +421,27 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		p = portas.pesquisa()
 		
 		print('Checando URL')
-		try:
-			s = requests.Session()
-			r = s.get(self.pesquisa_url.text())
-			h = BeautifulSoup(r.content,'html.parser')
-			r2 = h.find_all('div',{'id':'resultados'})
-			assert len(r2) > 0
+		self.meta = portas._contar_resultados(self.pesquisa_url.text())
 
-			x = h.findAll('td',{'bgcolor':'#EEEEEE'})[-2].getText()
-			x = x.split()[-1]
-			print('Resultados contém {} processos'.format(x))
-			self.meta = int(x)
-
-		except AssertionError:
+		if not self.meta:
 			self.progresso.hide()
 			self.reset()
 			self.erroUrl.show()	
 			return
 
 		# trava elementos
-		print('Travando UI')
 		self.box_pesquisa.setEnabled(False)
 		self.box_config.setEnabled(False)
 		time.sleep(1)
 
 		# configura objeto de pesquisa
-		self.progresso.setText('Iniciando pesquisa...')
+		self.progresso.setText('Configurando pesquisa')
 		p.nome = self.pesquisa_nome.text()
 
 		p.arq = self.pesquisa_arq.text() + '/' + p.nome
 		p.url = self.pesquisa_url.text()
-		print(p.url)
-		if self.isDics.isChecked() and self.raspar_dics.currentText():
-			p.dics = _parent + '/templates/' + self.raspar_dics.currentText()
+		if self.isDics.isChecked() and self.min_dics.currentText():
+			p.dics = _parent + '/templates/' + self.min_dics.currentText()
 		else:
 			p.dics = None
 		p.ciclo = self.nciclo.value()
@@ -402,19 +454,17 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 
 		if self.isLimite.isChecked():
 			p.limite = self.pesquisa_limite.value()
-			self.meta = p.limite + p.indice
+			self.meta = p.limite
 		else:
 			p.limite = None
-
-		self.raspar.clicked.disconnect(self.executar)
-		self.raspar.setEnabled(False)
-		time.sleep(2)
 		
+		print('Iniciando Thread')
+		self.progresso.setText('Executando primeiro ciclo...')
 		gen = portas.executar(p)
-		thread_progresso = progressThread(gen)
-		thread_progresso.progress_update.connect(self.atualizar_progresso)
-		thread_progresso.finished.connect(self.finalizar)
-		thread_progresso.start()
+		self.thread_progresso = progressThread(gen)
+		self.thread_progresso.progress_update.connect(self.atualizar_progresso)
+		self.thread_progresso.finished.connect(self.finalizar)
+		self.thread_progresso.start()
 
 if __name__ == "__main__":
 	app = QtWidgets.QApplication(sys.argv)

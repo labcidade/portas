@@ -15,9 +15,9 @@ import time
 import shutil
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-from portas import portas
+import portas
 
-ico = _parent+'\\gui\\icone_martelo.ico'
+ico = _parent+'/gui/icone_martelo.ico'
 
 # lista templates
 _templates_dir = _parent+'/templates'
@@ -27,7 +27,8 @@ templates = [x for x in templates if \
 
 # cria variáveis do programa
 esaj = 'https://esaj.tjsp.jus.br/cjpg/'
-qtCreatorFile = 'gui/portas.ui'
+ico = _parent+'/gui/icone_martelo.ico'
+qtCreatorFile = _parent+'/gui/portas.ui'
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
 
 # thread de execução, separado da interface

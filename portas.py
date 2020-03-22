@@ -19,17 +19,11 @@ from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
 
-parent = os.path.dirname(os.path.realpath(__file__))
-parent = os.path.dirname(os.path.realpath(parent))
-ico = parent+'\\gui\\icone_martelo.ico'
+_parent = os.path.dirname(os.path.realpath(__file__))
+ico = _parent+'\\gui\\icone_martelo.ico'
 
 # lista arquivos de configuração especial
-_dics = os.path.dirname\
-	(os.path.dirname(os.path.realpath(__file__)))+'\\dics'
-_templates = os.path.dirname\
-	(os.path.dirname(os.path.realpath(__file__)))+'\\templates'
-if not _templates:
-	_templates = [None]
+_dics = os.path.dirname(os.path.realpath(__file__))+'\\dics'
 
 requests.packages.urllib3.disable_warnings()
 root = Tk()

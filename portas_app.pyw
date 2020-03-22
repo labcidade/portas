@@ -3,18 +3,21 @@
 
 ### portas_app.py ###
 
-# importa módulos
-import sys
-import os
-import time
-import shutil
-from selenium import webdriver
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-
 # define a pasta local
+import os
 _parent = os.path.dirname(os.path.realpath(__file__))
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
+# importa módulos
+import install
+import sys
+import time
+import shutil
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5.QtWebEngineWidgets import QWebEngineView
 from portas import portas
+
+ico = _parent+'\\gui\\icone_martelo.ico'
 
 # lista templates
 _templates_dir = _parent+'/templates'
@@ -47,8 +50,17 @@ class progressThread(QtCore.QThread):
 
 		self.gen.close()
 		self.finished.emit()
-		#self.quit()
 
+
+class Browser(QWebEngineView):
+	fechamento = QtCore.pyqtSignal()
+
+	def __init__(self):
+		QtCore.QThread.__init__(self)
+
+	def closeEvent(self,event):
+		self.fechamento.emit()
+		event.accept()
 
 # classe de interface
 class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -110,34 +122,35 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			self.checar()
 
 	def abrir_navegador(self):
-		fbin = webdriver.firefox.firefox_binary.FirefoxBinary(\
-			r'recursos/FirefoxPortable/App/Firefox/firefox.exe')
-		self.driver = webdriver.Firefox(\
-			executable_path=r"recursos/geckodriver_win32.exe",\
-			firefox_binary=fbin)
-		self.driver.get(esaj)
+		self.browser = Browser()
+		self.browser.setWindowTitle('Realize uma consulta e capture a pesquisa na janela principal')
+		self.browser.setWindowIcon(QtGui.QIcon(ico))
+		self.browser.load(QtCore.QUrl(esaj))
+		self.browser.fechamento.connect(self.set_url)
+		self.browser.show()
 		self.captura_url.show()
 		self.captura_url.setEnabled(True)
 
 	def set_url(self):
-		while True:
-			try:
-				self.driver.find_element_by_xpath("//*[@value='Consultar']")
-				break
-			except:
-				self.captura_url.hide()
-				return
-
-		self.driver.find_element_by_xpath("//*[@value='Consultar']").click()
-		url = self.driver.current_url
-		self.driver.quit()
-
-		if url:
+		try:
+			url = self.browser.url()
+			url = url.toString()
+			assert url != esaj
 			url = url.replace("ordenacao=DESC","ordenacao=ASC")
 			self.pesquisa_url.clear()
 			self.pesquisa_url.insert(url)
-			self.captura_url.hide()
+			self.browser.close()
 			self.checar()
+		except:
+			self.pesquisa_url.clear()
+			pass
+		finally:
+			try:
+				self.browser.fechamento.disconnect()
+			except:
+				pass
+			self.browser.close()
+			self.captura_url.hide()
 
 	def resumir_template(self):
 		self.dic_desc.clear()
@@ -208,6 +221,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.box_config.setEnabled(True)
 		self.isLimite.setEnabled(True)
 		self.isCustom.setEnabled(True)
+		self.isXlsx.setEnabled(True)
 
 	def ativar_limite(self):
 		if self.isLimite.isChecked():
@@ -304,6 +318,10 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.pesquisa_arq.setEnabled(True)
 		self.browse_arq.setEnabled(True)
 		self.novo_template.setEnabled(False)
+		self.box_config.setEnabled(True)
+		self.isXlsx.setEnabled(True)
+		self.isCustom.setEnabled(False)
+		self.isLimite.setEnabled(False)
 		self.fazer.clicked.disconnect(self.executar)
 		self.fazer.clicked.connect(self.extrairpesquisa2)
 
@@ -329,7 +347,6 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.fazer.setEnabled(True)
 
 	def extrairpesquisa2(self):
-		self.fazer.setChecked(False)
 		self.fazer.setEnabled(False)
 		dir_out = self.pesquisa_arq.text()
 		basename = self.pesquisa_nome.text() + '_resultados'
@@ -349,8 +366,9 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		else:
 			sufixo = ' ({}).csv'.format(str(lc))
 		nome_out = dir_out + '\\' + basename + sufixo
-		
 		portas._extrair_csv(self.anterior,nome_out)
+		if self.isXlsx.isChecked():
+			portas._trocar_csv(nome_out)
 		self.finalizar()
 
 	def reset(self):
@@ -371,6 +389,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.min_dics.clear()
 		self.isLimite.setChecked(False)
 		self.isCustom.setChecked(False)
+		self.isXlsx.setChecked(False)
 		self.box_pesquisa.setEnabled(False)
 		self.box_config.setEnabled(False)
 		try:
@@ -420,7 +439,6 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.progresso.setText('Checando URL...')
 		p = portas.pesquisa()
 		
-		print('Checando URL')
 		self.meta = portas._contar_resultados(self.pesquisa_url.text())
 
 		if not self.meta:
@@ -457,7 +475,12 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			self.meta = p.limite
 		else:
 			p.limite = None
-		
+
+		if self.isXlsx.isChecked():
+			p.salvar_xlsx = True
+		else:
+			p.salvar_xlsx = False
+
 		print('Iniciando Thread')
 		self.progresso.setText('Executando primeiro ciclo...')
 		gen = portas.executar(p)

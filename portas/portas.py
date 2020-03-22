@@ -12,6 +12,7 @@ import requests
 import datetime
 import requests
 import hashlib
+import pandas
 from zipfile import ZipFile, ZIP_DEFLATED
 from bs4 import BeautifulSoup
 from tkinter import Tk
@@ -190,6 +191,15 @@ def _contar_resultados(url_base):
 	except:
 		return 0
 
+# troca arquivo csv do portas por xlsx
+def _trocar_csv(arq_csv):
+	assert arq_csv.endswith('.csv')
+	df = pandas.read_csv(arq_csv,encoding='utf-8',sep='|')
+	writer = pandas.ExcelWriter(arq_csv.replace('.csv','.xlsx'))
+	df.to_excel(writer,index = False)
+	writer.save()
+	os.remove(arq_csv)
+
 # define erro de entrada
 class EntradaIncorreta(Exception):
     pass
@@ -203,7 +213,7 @@ Utilizado na função executar
 class pesquisa:
 	def __init__(self,nome=None,url=None,ciclo=None,robos=None,
 			limite=None,indice=0,ignorados=0,arq=None,dics=None,
-			completa=False,retomada=False,original=None):
+			completa=False,retomada=False,original=None,salvar_xlsx=False):
 		self.nome=nome
 		self.url=url
 		self.ciclo=ciclo
@@ -216,6 +226,7 @@ class pesquisa:
 		self.completa=False # introdução de recaptcha no site impossibilitou a busca
 		self.retomada=retomada
 		self.original=original
+		self.salvar_xlsx=salvar_xlsx
 
 
 '''
@@ -900,6 +911,9 @@ def executar(pesquisa):
 			pass
 		os.rename(csv_int, csv_out)
 		os.rename(zip_out, portas_out)
+
+		if pesquisa.salvar_xlsx:
+			_trocar_csv(csv_out)
 
 		# Dá o aviso de finalização da execução
 		print("[portas] Raspagem finalizada!")

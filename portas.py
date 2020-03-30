@@ -19,11 +19,10 @@ from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
 
-_parent = os.path.dirname(os.path.realpath(__file__))
-ico = _parent+'\\gui\\icone_martelo.ico'
-
-# lista arquivos de configuração especial
-_dics = os.path.dirname(os.path.realpath(__file__))+'\\dics'
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+ico = 'gui/icone_martelo.ico'
+_dics = 'dics'
+_versao = '2020.1'
 
 requests.packages.urllib3.disable_warnings()
 root = Tk()
@@ -71,8 +70,11 @@ def _ler_dic (path):
 	dout = {}
 	with open(path, encoding='utf-8') as p:
 		for l in p:
-			c,v=l.split('\t')
-			dout[c]=v.replace('\n','').replace('\r','')
+			try:
+				c,v=l.split('\t')
+				dout[c]=v.replace('\n','').replace('\r','')
+			except NameError:
+				continue
 	return dout
 
 # obtém metadados de arquivo pz
@@ -238,7 +240,8 @@ def relatar(pesquisa,registro=0):
 		'indice\t' + str(indice) +'\n'+\
 		'ignorados\t' + str(pesquisa.ignorados) +'\n'+\
 		'template\t' + str(os.path.basename(template)) +'\n'+\
-		'url\t'+str(pesquisa.url)
+		'url\t'+str(pesquisa.url) +'\n'+\
+		'versao\t' + str(_versao)
 	return relato
 
 
@@ -278,7 +281,9 @@ class itemregistro:
 			self.completo =	False
 
 		self.resumo = self.dados[-1].find_all("span")[-1].get_text().upper()
-		self.dic["Comprimento resumo"] = len(self.resumo.replace("\n","").replace("\t",""))
+		self.dic["Caracteres sentença"] = len(self.resumo.replace("\n","").replace("\t",""))
+		self.dic["Palavras sentença"] = self.resumo.count(" ") + self.resumo.count("\n")
+		self.dic["Frases sentença"] = self.resumo.count(".")
 
 	# função para procurar uma série de valores de dic em alvo e retornar chave para campo
 	def buscaralvo(self,campo,dic,alvo):
@@ -340,7 +345,7 @@ class itemregistro:
 
 	# função para encontrar valores de aluguel
 	def aluguel(self):
-		self.dic["Contagem R$"] = self.resumo.count('R$')
+		cont_reais = self.resumo.count('R$')
 
 		# se classe for sobre despejo e houver valor monetário, procura valor da dívida e valor mensal do aluguel
 		self.dic["Aluguel (R$)"] = ''
@@ -350,7 +355,7 @@ class itemregistro:
 		self.dic["Aluguel atualizado NA"] = ''
 		self.dic["Dívida do requerido NA"] = ''
 
-		if 'DESPEJO' in self.dic['Classe'].upper() and self.dic["Contagem R$"]>0:
+		if 'DESPEJO' in self.dic['Classe'].upper() and cont_reais>0:
 						
 			# procura valores de aluguel
 			for frase in ['ALUGUEL MENSAL','MENSAL','VALOR DO ALUGUEL','VALOR ATUAL DO ALUGUEL']:
@@ -418,11 +423,9 @@ class itemregistro:
 	# função para encontrar localização
 	def endereco(self):
 		self.dic['Endereço'] = ''
-		self.dic['Ref Endereço'] = ''
-		for termo in (" LOCALIZADO"," SITUADO"):
+		for termo in ("LOCALIZADO","SITUADO"):
 			try:
 				if termo in self.resumo:
-					self.dic['Ref Endereço'] = 'Sim'
 					texto = self.resumo[self.resumo.index(termo):self.resumo.index(termo)+150]
 					texto = texto.replace(termo,'')
 					if texto[:2] == 'S ':
@@ -436,6 +439,8 @@ class itemregistro:
 					texto = [a for a in texto if a and a != ' ']
 					logradouro = texto[0].replace('À','').replace(' Á ','').replace(' NA ','').replace(' NO ','').replace(' A ','')
 					logradouro = logradouro.strip()
+					if logradouro.startswith('NA '):
+						logradouro = logradouro.replace('NA ','')
 					numero = ''
 					
 					try:
@@ -454,19 +459,13 @@ class itemregistro:
 							except IndexError:
 								pass
 
-							if ' Nº' in logradouro:
-								numero = [v for v in logradouro.split(' Nº')[-1].replace('.','').replace(',','').split() if v.isdigit()][0]
-								logradouro = logradouro[:logradouro.index(' Nº')]
-							elif ' N.' in logradouro:
-								numero = [v for v in logradouro.split(' N.')[-1].replace('.','').replace(',','').split() if v.isdigit()][0]
-								logradouro = logradouro[:logradouro.index(' N.')]
-							elif ' N°' in logradouro:
-								numero = [v for v in logradouro.split(' N°')[-1].replace('.','').replace(',','').split() if v.isdigit()][0]
-								logradouro = logradouro[:logradouro.index(' N°')]
-							elif ' NO.' in logradouro:
-								numero = [v for v in logradouro.split(' NO.')[-1].replace('.','').replace(',','').split() if v.isdigit()][0]
-								logradouro = logradouro[:logradouro.index(' NO.')]
-							else:
+							termos_num = [' Nº',' N.',' N°',' NO.']
+							for n in termos_num:
+								if n in logradouro:
+									numero = [v for v in logradouro.split(n)[-1].replace('.','').replace(',','').split() if v.isdigit()][0]
+									logradouro = logradouro[:logradouro.index(n)]
+							
+							if not numero:
 								numero = [v for v in texto[1].replace('.','').split() if v.isdigit()][0]
 							break
 					
@@ -493,8 +492,6 @@ class itemregistro:
 					self.dic['Endereço'] = endfinal
 					break
 			except:
-				if termo in self.resumo:
-					self.dic['Ref Endereço'] = 'Sim'
 				continue
 
 	# função para encontrar sentenças
@@ -756,6 +753,7 @@ def executar(pesquisa):
 							u.campovazio('Descrição parte 1')
 
 						u.buscaralvo('RAJ',masterdic['rajs'],u.dic["Comarca"])
+						u.buscaralvo('UTA',masterdic['utas'],u.dic["Foro"])
 						u.buscaralvo('Justiça gratuita',{'Sim':["\nJUSTIÇA GRATUITA\n"]},u.resumo)
 						u.aluguel()
 						u.endereco()
@@ -867,7 +865,7 @@ def executar(pesquisa):
 			print('[portas]',len(matriz),"processos salvos!\n")
 			inicio = False
 			ignorados += parciais.count('ignorado')
-			pesquisa.ignorados += ignorados
+			pesquisa.ignorados += parciais.count('ignorado')
 			contagem += parciais.count('contagem')
 			i_pag += parciais.count('pagina')
 
@@ -914,3 +912,4 @@ def executar(pesquisa):
 		print("         Itens registrados:", contagem - ignorados)
 		print("         Itens ignorados:", ignorados)
 		print("         Itens já registrados na pesquisa:",pesquisa.indice + contagem)
+		print("         Itens já ignorados na pesquisa:",pesquisa.ignorados)

@@ -1,0 +1,332 @@
+Foro de Arujá	01C01
+Foro de Barueri	01C02
+Foro de Carapicuíba	01C03
+Foro de Cotia	01C04
+Foro de Diadema	01C05
+Foro de Embu das Artes	01C06
+Foro de Embu-Guaçu	01C07
+Foro de Ferraz de Vasconcelos	01C08
+Foro de Guararema	01C09
+Foro de Guarulhos	01C10
+Foro de Itapecerica da Serra	01C11
+Foro de Itapevi	01C12
+Foro de Itaquaquecetuba	01C13
+Foro de Jandira	01C14
+Foro de Mairiporã	01C15
+Foro de Mauá	01C16
+Foro de Mogi das Cruzes	01C17
+Foro de Osasco	01C18
+Foro de Poá	01C19
+Foro de Ribeirão Pires	01C20
+Foro de Rio Grande da Serra	01C21
+Foro de Santa Isabel	01C22
+Foro de Santana de Parnaíba	01C23
+Foro de Santo André	01C24
+Foro de São Bernardo do Campo	01C25
+Foro de São Caetano do Sul	01C26
+Foro Regional IX - Vila Prudente	01F01
+Foro Regional I - Santana	01F02
+Foro Central Cível	01F03
+Foro Regional IV - Lapa	01F04
+Foro Regional VIII - Tatuapé	01F05
+Foro Regional VII - Itaquera	01F06
+Foro Regional V - São Miguel Paulista	01F07
+Foro Regional II - Santo Amaro	01F08
+Foro Regional XV - Butantã	01F09
+Foro Regional III - Jabaquara	01F10
+Foro Regional XII - Nossa Senhora do Ó	01F11
+Foro Regional VI - Penha de França	01F12
+Foro Regional XI - Pinheiros	01F13
+Foro Regional X - Ipiranga	01F14
+Foro de Suzano	01C27
+Foro de Taboão da Serra	01C28
+Foro de Vargem Grande Paulista	01C29
+Foro de Andradina	02C01
+Foro de Araçatuba	02C02
+Foro de Auriflama	02C03
+Foro de Bilac	02C04
+Foro de Birigui	02C05
+Foro de Buritama	02C06
+Foro de Cafelândia	02C07
+Foro de Getulina	02C08
+Foro de Guararapes	02C09
+Foro de Ilha Solteira	02C10
+Foro de Jales	02C11
+Foro de Lins	02C12
+Foro de Mirandópolis	02C13
+Foro de Palmeira D'Oeste	02C14
+Foro de Penápolis	02C15
+Foro de Pereira Barreto	02C16
+Foro de Promissão	02C17
+Foro de Santa Fé do Sul	02C18
+Foro de Urânia	02C19
+Foro de Valparaíso	02C20
+Foro de Agudos	03C01
+Foro de Avaré	03C02
+Foro de Bariri	03C03
+Foro de Barra Bonita	03C04
+Foro de Bauru	03C05
+Foro de Botucatu	03C06
+Foro de Cerqueira César	03C07
+Foro de Chavantes	03C08
+Foro de Conchas	03C09
+Foro de Dois Córregos	03C10
+Foro de Duartina	03C11
+Foro de Fartura	03C12
+Foro de Ipauçu	03C13
+Foro de Itaí	03C14
+Foro de Itatinga	03C15
+Foro de Jaú	03C16
+Foro de Lençóis Paulista	03C17
+Foro de Macatuba	03C18
+Foro de Ourinhos	03C19
+Foro de Paranapanema	03C20
+Foro de Pederneiras	03C21
+Foro de Piraju	03C22
+Foro de Pirajuí	03C23
+Foro de Piratininga	03C24
+Foro de Porangaba	03C25
+Foro de Santa Cruz do Rio Pardo	03C26
+Foro de São Manuel	03C27
+Foro de Taquarituba	03C28
+Foro de Aguaí	04C01
+Foro de Águas de Lindoia	04C02
+Foro de Americana	04C03
+Foro de Amparo	04C04
+Foro de Araras	04C05
+Foro de Artur Nogueira	04C06
+Foro de Atibaia	04C07
+Foro de Bragança Paulista	04C08
+Foro de Brotas	04C09
+Foro de Caieiras	04C10
+Foro de Cajamar	04C11
+Foro Regional de Vila Mimosa	04C12
+Foro de Campo Limpo Paulista	04C13
+Foro de Capivari	04C14
+Foro de Cerquilho	04C15
+Foro de Conchal	04C16
+Foro de Cordeirópolis	04C17
+Foro de Cosmópolis	04C18
+Foro de Espírito Santo do Pinhal	04C19
+Foro de Francisco Morato	04C20
+Foro de Franco da Rocha	04C21
+Foro de Hortolândia	04C22
+Foro de Itapira	04C23
+Foro de Itatiba	04C24
+Foro de Itirapina	04C25
+Foro de Itupeva	04C26
+Foro de Jaguariúna	04C27
+Foro de Jarinu	04C28
+Foro de Jundiaí	04C29
+Foro de Laranjal Paulista	04C30
+Foro de Leme	04C31
+Foro de Limeira	04C32
+Foro de Louveira	04C33
+Foro de Mogi Guaçu	04C34
+Foro de Mogi Mirim	04C35
+Foro de Monte Mor	04C36
+Foro de Nazaré Paulista	04C37
+Foro de Nova Odessa	04C38
+Foro de Paulínia	04C39
+Foro de Pedreira	04C40
+Foro de Pinhalzinho	04C41
+Foro de Piracaia	04C42
+Foro de Piracicaba	04C43
+Foro de Pirassununga	04C44
+Foro de Porto Ferreira	04C45
+Foro de Rio Claro	04C46
+Foro de Rio das Pedras	04C47
+Foro de Santa Bárbara D'Oeste	04C48
+Foro de Santa Rita do Passa Quatro	04C49
+Foro de São João da Boa Vista	04C50
+Foro de São Pedro	04C51
+Foro de Serra Negra	04C52
+Foro de Socorro	04C53
+Foro de Sumaré	04C54
+Foro de Tietê	04C55
+Foro de Valinhos	04C56
+Foro de Vargem Grande do Sul	04C57
+Foro de Várzea Paulista	04C58
+Foro de Vinhedo	04C59
+Foro de Adamantina	05C01
+Foro de Assis	05C02
+Foro de Bastos	05C03
+Foro de Cândido Mota	05C04
+Foro de Dracena	05C05
+Foro de Flórida Paulista	05C06
+Foro de Gália	05C07
+Foro de Garça	05C08
+Foro de Iepê	05C09
+Foro de Junqueirópolis	05C10
+Foro de Lucélia	05C11
+Foro de Maracaí	05C12
+Foro de Marília	05C13
+Foro de Martinópolis	05C14
+Foro de Mirante do Paranapanema	05C15
+Foro de Osvaldo Cruz	05C16
+Foro de Pacaembu	05C17
+Foro de Palmital	05C18
+Foro de Panorama	05C19
+Foro de Paraguaçu Paulista	05C20
+Foro de Pirapozinho	05C21
+Foro de Pompéia	05C22
+Foro de Presidente Bernardes	05C23
+Foro de Presidente Epitácio	05C24
+Foro de Presidente Prudente	05C25
+Foro de Presidente Venceslau	05C26
+Foro de Quatá	05C27
+Foro de Rancharia	05C28
+Foro de Regente Feijó	05C29
+Foro de Rosana	05C30
+Foro de Santo Anastácio	05C31
+Foro de Teodoro Sampaio	05C32
+Foro de Tupã	05C33
+Foro de Tupi Paulista	05C34
+Foro de Altinópolis	06C01
+Foro de Américo Brasiliense	06C02
+Foro de Araraquara	06C03
+Foro de Batatais	06C04
+Foro de Borborema	06C05
+Foro de Brodowski	06C06
+Foro de Caconde	06C07
+Foro de Cajuru	06C08
+Foro de Casa Branca	06C09
+Foro de Cravinhos	06C10
+Foro de Descalvado	06C11
+Foro de Franca	06C12
+Foro de Guará	06C13
+Foro de Guariba	06C14
+Foro de Iacanga	06C15
+Foro de Ibaté	06C16
+Foro de Ibitinga	06C17
+Foro de Igarapava	06C18
+Foro de Ipuã	06C19
+Foro de Itápolis	06C20
+Foro de Ituverava	06C21
+Foro de Jaboticabal	06C22
+Foro de Jardinópolis	06C23
+Foro de Matão	06C24
+Foro de Miguelópolis	06C25
+Foro de Mococa	06C26
+Foro de Monte Alto	06C27
+Foro de Morro Agudo	06C28
+Foro de Nuporanga	06C29
+Foro de Orlândia	06C30
+Foro de Patrocínio Paulista	06C31
+Foro de Pedregulho	06C32
+Foro de Pirangi	06C33
+Foro de Pitangueiras	06C34
+Foro de Pontal	06C35
+Foro de Ribeirão Bonito	06C36
+Foro de Ribeirão Preto	06C37
+Foro de Santa Cruz das Palmeiras	06C38
+Foro de Santa Rosa de Viterbo	06C39
+Foro de São Carlos	06C40
+Foro de São Joaquim da Barra	06C41
+Foro de São José do Rio Pardo	06C42
+Foro de São Sebastião da Grama	06C43
+Foro de São Simão	06C44
+Foro de Serrana	06C45
+Foro de Sertãozinho	06C46
+Foro de Tambaú	06C47
+Foro de Taquaritinga	06C48
+Foro de Bertioga	07C01
+Foro de Cananéia	07C02
+Foro de Cubatão	07C03
+Foro de Eldorado Paulista	07C04
+Foro de Guarujá	07C05
+Foro de Iguape	07C06
+Foro de Itanhaém	07C07
+Foro de Itariri	07C08
+Foro de Jacupiranga	07C09
+Foro de Juquiá	07C10
+Foro de Miracatu	07C11
+Foro de Mongaguá	07C12
+Foro de Pariquera-Açu	07C13
+Foro de Peruíbe	07C14
+Foro de Praia Grande	07C15
+Foro de Registro	07C16
+Foro de Santos	07C17
+Foro de São Vicente	07C18
+Foro de Barretos	08C01
+Foro de Bebedouro	08C02
+Foro de Cardoso	08C03
+Foro de Catanduva	08C04
+Foro de Colina	08C05
+Foro de Estrela D'Oeste	08C06
+Foro de Fernandópolis	08C07
+Foro de General Salgado	08C08
+Foro de Guaíra	08C09
+Foro de Itajobi	08C10
+Foro de José Bonifácio	08C11
+Foro de Macaubal	08C12
+Foro de Mirassol	08C13
+Foro de Monte Aprazível	08C14
+Foro de Monte Azul Paulista	08C15
+Foro de Neves Paulista	08C16
+Foro de Nhandeara	08C17
+Foro de Nova Granada	08C18
+Foro de Novo Horizonte	08C19
+Foro de Olímpia	08C20
+Foro de Ouroeste	08C21
+Foro de Palestina	08C22
+Foro de Paulo de Faria	08C23
+Foro de Potirendaba	08C24
+Foro de Santa Adélia	08C25
+Foro de São José do Rio Preto	08C26
+Foro de Tabapuã	08C27
+Foro de Tanabi	08C28
+Foro de Urupês	08C29
+Foro de Viradouro	08C30
+Foro de Votuporanga	08C31
+Foro de Aparecida	09C01
+Foro de Bananal	09C02
+Foro de Caçapava	09C03
+Foro de Cachoeira Paulista	09C04
+Foro de Campos do Jordão	09C05
+Foro de Caraguatatuba	09C06
+Foro de Cruzeiro	09C07
+Foro de Cunha	09C08
+Foro de Guaratinguetá	09C09
+Foro de Ilhabela	09C10
+Foro de Jacareí	09C11
+Foro de Lorena	09C12
+Foro de Paraibuna	09C13
+Foro de Pindamonhangaba	09C14
+Foro de Piquete	09C15
+Foro de Queluz	09C16
+Foro de Roseira	09C17
+Foro de Salesópolis	09C18
+Foro de Santa Branca	09C19
+Foro de São Bento do Sapucaí	09C20
+Foro de São José dos Campos	09C21
+Foro de São Luiz do Paraitinga	09C22
+Foro de São Sebastião	09C23
+Foro de Taubaté	09C24
+Foro de Tremembé	09C25
+Foro de Ubatuba	09C26
+Foro de Angatuba	10C01
+Foro de Apiaí	10C02
+Foro de Boituva	10C03
+Foro de Buri	10C04
+Foro de Cabreúva	10C05
+Foro de Capão Bonito	10C06
+Foro de Ibiúna	10C07
+Foro de Indaiatuba	10C08
+Foro de Itaberá	10C09
+Foro de Itapetininga	10C10
+Foro de Itapeva	10C11
+Foro de Itaporanga	10C12
+Foro de Itararé	10C13
+Foro de Itu	10C14
+Foro de Mairinque	10C15
+Foro de Piedade	10C16
+Foro de Pilar do Sul	10C17
+Foro de Porto Feliz	10C18
+Foro de Salto	10C19
+Foro de Salto de Pirapora	10C20
+Foro de São Miguel Arcanjo	10C21
+Foro de São Roque	10C22
+Foro de Sorocaba	10C23
+Foro de Tatuí	10C24
+Foro de Votorantim	10C25

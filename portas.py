@@ -13,6 +13,7 @@ import datetime
 import requests
 import hashlib
 import pandas
+import shutil
 from zipfile import ZipFile, ZIP_DEFLATED
 from bs4 import BeautifulSoup
 from tkinter import Tk
@@ -134,6 +135,12 @@ def _preparar_template(pf,pasta_dics):
 		os.rename(alvozip,pf)
 		return dmeta['template']
 
+# encontra o número de processos totais em uma resposta url
+def _achar_proctot(sopa):
+	i = sopa.find('td',{'bgcolor':'#EEEEEE'}).get_text()
+	i = int(i.split()[-1])
+	return i
+
 # encontra um arquivo portas e retorna caminho e dados
 def _achar_portas():
 	while True:
@@ -209,7 +216,7 @@ Utilizado na função executar
 class pesquisa:
 	def __init__(self,nome=None,url=None,ciclo=None,robos=None,
 			limite=None,indice=0,ignorados=0,arq=None,dics=None,
-			completa=False,retomada=False,original=None,salvar_xlsx=False):
+			completa=False,retomada=False,original=None,salvar_xlsx=False,espelho=''):
 		self.nome=nome
 		self.url=url
 		self.ciclo=ciclo
@@ -223,6 +230,7 @@ class pesquisa:
 		self.retomada=retomada
 		self.original=original
 		self.salvar_xlsx=salvar_xlsx
+		self.espelho=espelho
 
 
 '''
@@ -603,30 +611,20 @@ def executar(pesquisa):
 	contagem = ignorados = 0
 
 	# providencia nome do arquivo
-	dir_out = os.path.dirname(pesquisa.arq)
-	basename = os.path.basename(pesquisa.arq)
-	rivais = os.listdir(dir_out)
-	csv_rivais = [x.replace('_resultados.csv','') \
-		for x in rivais if x.endswith('_resultados.csv')]
-	csv_rivais = [x for x in csv_rivais\
-		if x.startswith(basename) and (len(basename)==(len(x)-4)\
-		or len(basename)==(len(x)-5))]
-	lc = len(csv_rivais)
-	if basename+'_resultados.csv' in os.listdir(dir_out):
-		lc += 1
-
-	portas_rivais = [x.replace('.portas','') for x in rivais if x.endswith('.portas')]
-	portas_rivais = [x for x in portas_rivais\
-		if x.startswith(basename) and (len(basename)==(len(x)-4) or len(basename)==(len(x)-5))]
-	lp = len(portas_rivais)
-	if basename+'.portas' in os.listdir(dir_out):
-		lp += 1
-
-	n_rivais = max(lc,lp)
-	if n_rivais == 0:
-		sufixo = ''
-	else:
-		sufixo = ' ({})'.format(str(n_rivais))
+	n_rivais = 1
+	while True:
+		portas_teste = pesquisa.arq + ' (' + str(n_rivais) + ').portas'
+		csv_teste = pesquisa.arq + ' (' + str(n_rivais) + ')_resultados.csv'
+		xlsx_teste = pesquisa.arq + ' (' + str(n_rivais) + ')_resultados.xslx'
+		if not os.path.isfile(pesquisa.arq + '.portas') and not os.path.isfile(pesquisa.arq + '_resultados.csv') and not os.path.isfile(pesquisa.arq + '_resultados.xlsx'):
+			sufixo = ''
+			break
+		elif not os.path.isfile(portas_teste) and not os.path.isfile(csv_teste) and not os.path.isfile(xlsx_teste):
+			sufixo = ' ({})'.format(str(n_rivais))
+			break
+		else:
+			n_rivais += 1
+			continue
 
 	nome_out = pesquisa.arq + sufixo
 	nowiso = str(datetime.datetime.now().isoformat())
@@ -636,6 +634,15 @@ def executar(pesquisa):
 	portas_out = nome_out + '.portas'
 	txt_out = nome_out + '.txt'
 	zip_out = nome_out + '.zip'
+
+	if pesquisa.espelho:
+		try:
+			assert os.path.isdir(pesquisa.espelho)
+			assert os.path.isfile(pesquisa.espelho +'/validador.txt')
+		except:
+			validador = pesquisa.espelho +'/validador.txt'
+			with open(validador, 'w', encoding='utf-8') as vfile:
+				vfile.write(pesquisa.url)
 
 	if pesquisa.retomada and pesquisa.original:
 		_extrair_csv(pesquisa.original,csv_int)
@@ -664,12 +671,34 @@ def executar(pesquisa):
 	else:
 		mastercustom = None
 
+	# avalia se há pesquisa fantasma
+	tentativas = []
+	proctot = 0
+	while len(tentativas) < 20:
+		s = requests.Session()
+		r = s.get(pesquisa.url)
+		s.close()
+		t_soup = BeautifulSoup(r.content,'html.parser')
+		tottentativa = _achar_proctot(t_soup)
+		if tottentativa >= proctot:
+			proctot = tottentativa
+			tentativas += [tottentativa]
+			continue
+		else:
+			break
+
+	tentativas = list(set(tentativas))
+	tentativas = [str(x) for x in tentativas]
+	tp = ', '.join(tentativas)
+	print ('[portas] Totais de resultados identificados:',tp)
+	print('[portas] Total usado na busca:',proctot)
+
 	'''
 	FUNÇÃO _ROBO
 	Componente de multiprocessamento
 	Utilizada internamente na função cumprir
 	'''
-	def _robo(tarefas,matriz,parciais,cadeado,cadeado2,cod):
+	def _robo(tarefas,matriz,parciais,cadeado,cadeado2,cadeado3,cod):
 		bandeira = False
 		prefixo = '[portas._robo #{}] '.format(str(cod+1))
 		while not tarefas.empty():
@@ -694,13 +723,44 @@ def executar(pesquisa):
 				print(ts)
 				while True:
 					try:
-						sessao = requests.Session()
-						sessao.trust_env=False
-						resposta = sessao.get(pesquisa.url,verify=False)
-						pagina = sessao.get('https://esaj.tjsp.jus.br/cjpg/trocarDePagina.do?pagina='+str(tarefa)+'&conversationId=',verify=False)
-						itens_na_pagina = [a for a in BeautifulSoup(pagina.content,'html.parser').find_all("tr",{"class":"fundocinza1"})[:10]]
-						assert pagina.text != '\nSessão Expirada\n' and pagina.ok
-						sessao.close()
+						itens_na_pagina = []
+
+						# realiza pesquisa em pasta local
+						if pesquisa.espelho:
+							repfile = '{0}/{1}.html'.format(pesquisa.espelho, str(tarefa))
+							if os.path.isfile(repfile):
+								with open(repfile,'rb') as rephtml:
+									itens_na_pagina = [a for a in BeautifulSoup(rephtml,'html.parser').find_all("tr",{"class":"fundocinza1"})[:10]]
+								if len(itens_na_pagina) < 10:
+									itens_na_pagina = []
+
+						# realiza pesquisa na internet
+						if not itens_na_pagina:
+							while True:
+								sessao = requests.Session()
+								sessao.trust_env=False
+								resposta = sessao.get(pesquisa.url,verify=False)
+								pagina = sessao.get('https://esaj.tjsp.jus.br/cjpg/trocarDePagina.do?pagina='+str(tarefa)+'&conversationId=',verify=False)
+								pag_soup = BeautifulSoup(pagina.content,'html.parser')
+								assert pagina.text != '\nSessão Expirada\n' and pagina.ok
+								sessao.close()
+							
+								tottentativa = _achar_proctot(pag_soup)
+								if tottentativa < proctot:
+									continue
+								else:
+									break
+
+							itens_na_pagina = [a for a in pag_soup.find_all("tr",{"class":"fundocinza1"})[:10]]
+						
+							# salva os dados da página
+							_t, _u, _f = shutil.disk_usage('/')
+							if pesquisa.espelho and _f//(2**30) > 1 and len(itens_na_pagina) > 0:
+								html_out = '{0}/{1}.html'.format(pesquisa.espelho, str(tarefa))
+								cadeado3.acquire()
+								with open(html_out,'wb') as htmlfile:
+									htmlfile.write(pagina.content)
+								cadeado3.release()
 						break
 					except AssertionError:
 						agora = datetime.datetime.now()
@@ -818,6 +878,7 @@ def executar(pesquisa):
 			parciais = []
 			cadeado_A = threading.Lock()
 			cadeado_B = threading.Lock()
+			cadeado_C = threading.Lock()
 
 			print('[portas] Iniciando execução do ciclo',str(c))
 
@@ -826,7 +887,7 @@ def executar(pesquisa):
 
 			# distribui trabalho para os estagiários
 			for a in range(pesquisa.robos):
-				trabalho = threading.Thread(target=_robo,args=(tarefas,matriz,parciais,cadeado_A,cadeado_B,a))
+				trabalho = threading.Thread(target=_robo,args=(tarefas,matriz,parciais,cadeado_A,cadeado_B,cadeado_C,a))
 				trabalho.daemon = True
 				trabalho.start()
 

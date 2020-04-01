@@ -65,11 +65,13 @@ class Browser(QWebEngineView):
 # classe de interface
 class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 	def __init__(self):
+		self.texto_aviso = '<html><head/><body><p align="center"><span style=" color:#ff0037;">{}</span></p></body></html>'
 		QtWidgets.QMainWindow.__init__(self)
 		Ui_MainWindow.__init__(self)
 		self.setupUi(self)
 		self.sucesso.hide()
 		self.erro.hide()
+		self.aviso_espelho.hide()
 		self.captura_url.hide()
 		self.progresso.hide()
 		self.isCompleta.hide()
@@ -88,6 +90,8 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.extrairp.clicked.connect(self.extrairpesquisa)
 		self.browse_arq.clicked.connect(self.set_saida)
 		self.browse_url.clicked.connect(self.abrir_navegador)
+		self.browse_espelho.clicked.connect(self.set_espelho)
+		self.novo_espelho.clicked.connect(self.criar_espelho)
 		self.captura_url.clicked.connect(self.set_url)
 		self.pesquisa_nome.editingFinished.connect(self.checar)
 		self.pesquisa_arq.editingFinished.connect(self.checar)
@@ -96,6 +100,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.isDics.stateChanged.connect(self.ativar_templates)
 		self.isLimite.stateChanged.connect(self.ativar_limite)
 		self.isCustom.stateChanged.connect(self.ativar_custom)
+		self.isEspelho.stateChanged.connect(self.ativar_espelho)
 		self.min_dics.currentTextChanged.connect(self.resumir_template)
 
 	def checar(self):
@@ -121,6 +126,42 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			self.rol_destino = os.listdir(d)
 			self.checar()
 
+	def set_espelho(self):
+		self.aviso_espelho.hide()
+		d = portas._achar_pasta()
+		if d:
+			try:
+				verif = d +'/validador.txt'
+				assert os.path.isfile(verif)
+				with open(verif,'r',encoding='utf-8') as verifile:
+					self.verurl = verifile.read()
+				if len(self.pesquisa_url.text())>0 and self.verurl != self.pesquisa_url.text():
+					self.aviso_espelho.setText(self.texto_aviso.format('Os arquivos na pasta indicada não correspondem aos dados de entrada!'))
+					self.aviso_espelho.show()
+					return
+				elif len(self.pesquisa_url.text())==0:
+					self.pesquisa_url.clear()
+					self.pesquisa_url.insert(self.verurl)
+				self.pesquisa_espelho.clear()
+				self.pesquisa_espelho.insert(d)
+				self.aviso_espelho.hide()
+			except:
+				self.aviso_espelho.setText(self.texto_aviso.format('A pasta indicada não possui um arquivo validador!'))
+				self.aviso_espelho.show()
+				return
+
+	def criar_espelho(self):
+		self.aviso_espelho.hide()
+		d = portas._achar_pasta()
+		if d:
+			ld = os.listdir(d)
+			if len(ld)==0:
+				self.pesquisa_espelho.clear()
+				self.pesquisa_espelho.insert(d)
+			else:
+				self.aviso_espelho.setText(self.texto_aviso.format('A pasta indicada precisa estar vazia!'))
+				self.aviso_espelho.show()
+
 	def abrir_navegador(self):
 		self.browser = Browser()
 		self.browser.setWindowTitle('Realize uma consulta e capture a pesquisa na janela principal')
@@ -141,6 +182,10 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			self.pesquisa_url.insert(url)
 			self.browser.close()
 			self.checar()
+			if self.verurl and self.verurl != url:
+				self.pesquisa_espelho.clear()
+				self.aviso_espelho.setText(self.texto_aviso.format('O endereço URL obtido não corresponde à pasta indicada'))
+				self.aviso_espelho.show()
 		except:
 			self.pesquisa_url.clear()
 			pass
@@ -177,20 +222,17 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			assert sinal
 			destino = _templates_dir+'/'+nome
 			if os.path.isdir(destino):
-				odics = os.listdir(pasta)
-				odics.sort()
-				ddics = os.listdir(destino)
-				ddics.sort()
-				if ddics == odics:
-					return
-				else:
-					rivais = [x for x in templates if x.startswith(nome)]
-					r1 = ['_'.join(x.split('_')[:-1]) for x in rivais if '_' in x and x.split('_')[-1].isdigit()]
-					r2 = [x for x in rivais if '_' not in x]
-					rivais = r1+r2
-					nrivais = rivais.count(nome)
-					destino = destino + '_' + str(nrivais)
-					nome = nome + '_' + str(nrivais)
+				nrivais = 1
+				while True:
+					nometeste = destino + '_' + str(nrivais)
+					if os.path.isdir(nometeste):
+						nrivais +=1
+						continue
+					else:
+						break
+
+				destino = destino + '_' + str(nrivais)
+				nome = nome + '_' + str(nrivais)
 
 			shutil.copytree(pasta,destino)
 			templates.append(nome)
@@ -222,6 +264,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.isLimite.setEnabled(True)
 		self.isCustom.setEnabled(True)
 		self.isXlsx.setEnabled(True)
+		self.isEspelho.setEnabled(True)
 
 	def ativar_limite(self):
 		if self.isLimite.isChecked():
@@ -245,6 +288,19 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			self.nciclo.setEnabled(False)
 			self.nrobos.setValue(10)
 			self.nciclo.setValue(500)
+
+	def ativar_espelho(self):
+		if self.isEspelho.isChecked():
+			self.pesquisa_espelho.setEnabled(True)
+			self.browse_espelho.setEnabled(True)
+			self.novo_espelho.setEnabled(True)
+		else:
+			self.pesquisa_espelho.setEnabled(False)
+			self.browse_espelho.setEnabled(False)
+			self.novo_espelho.setEnabled(False)
+			self.pesquisa_espelho.clear()
+		self.aviso_espelho.hide()
+		self.verurl = ''
 
 	def novapesquisa(self):
 		self.reset()
@@ -280,13 +336,14 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		try:
 			self.anterior, self.d = portas._achar_portas()
 			assert self.anterior
-			assert self.d['versao'] == portas._versao
-		except:
-			self.reset()
 			if self.d['versao'] != portas._versao:
 				textoerro = 'A pesquisa selecionada foi realizada no Portas {}'.format(self.d['versao'])
 				self.erro.setText(textoerro)
 				self.erro.show()
+				raise Exception
+		except:
+			self.reset()
+			
 			return
 		if self.d['template'] != '*':
 			self.isDics.setChecked(True)
@@ -333,6 +390,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.isXlsx.setEnabled(True)
 		self.isCustom.setEnabled(False)
 		self.isLimite.setEnabled(False)
+		self.isEspelho.setEnabled(False)
 		self.fazer.clicked.disconnect(self.executar)
 		self.fazer.clicked.connect(self.extrairpesquisa2)
 
@@ -386,6 +444,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.sucesso.hide()
 		self.erro.hide()
 		self.progresso.hide()
+		self.aviso_espelho.hide()
 		self.barraProgresso.setValue(0)
 		self.novap.setEnabled(True)
 		self.retomarp.setEnabled(True)
@@ -395,11 +454,13 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.pesquisa_nome.clear()
 		self.pesquisa_arq.clear()
 		self.pesquisa_url.clear()
+		self.pesquisa_espelho.clear()
 		self.isCompleta.setChecked(False)
 		self.isDics.setChecked(False)
 		self.min_dics.clear()
 		self.isLimite.setChecked(False)
 		self.isCustom.setChecked(False)
+		self.isEspelho.setChecked(False)
 		self.isXlsx.setChecked(False)
 		self.box_pesquisa.setEnabled(False)
 		self.box_config.setEnabled(False)
@@ -439,6 +500,12 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.sucesso.show()
 
 	def executar(self):
+		print('Configurando pasta de apoio')
+		if self.isEspelho.isChecked() and len(self.pesquisa_espelho.text())==0:
+			arq_espelho = self.pesquisa_arq.text() + '/TJSP_' + self.pesquisa_nome.text()
+			self.pesquisa_espelho.clear()
+			self.pesquisa_espelho.insert(arq_espelho)
+
 		print('Começando a execução')
 		self.fazer.clicked.disconnect(self.executar)
 		time.sleep(1)
@@ -493,6 +560,9 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			p.salvar_xlsx = True
 		else:
 			p.salvar_xlsx = False
+
+		if self.isEspelho.isChecked():
+			p.espelho = self.pesquisa_espelho.text()
 
 		print('Iniciando Thread')
 		self.progresso.setText('Executando primeiro ciclo...')

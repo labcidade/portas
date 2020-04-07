@@ -79,6 +79,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.d = {}
 		self.anterior = None
 		self.retomada = False
+		self.verurl = ''
 
 		renome = QtCore.QRegExp('[^/:?|<>*"]{1,}')
 		validanome = QtGui.QRegExpValidator(renome)

@@ -504,7 +504,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Os templates são conjuntos de variáveis de busca que podem ser facilmente criados e alterados. O template utilizado será copiado no arquivo .portas de saída, para que possam ser usados por outros computadores em retomadas de pesquisa.&lt;/p&gt;&lt;p&gt;Visite a documentação do PORTAS para saber como escrever um template. Para adicionar novos templates à lista, clique na lupa.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Os templates são conjuntos de variáveis de busca que podem ser facilmente criados e alterados. O template utilizado será copiado no arquivo .portas de saída, para que possam ser usados por outros computadores em retomadas de pesquisa.&lt;/p&gt;&lt;p&gt;Visite a documentação do PORTAS para saber como escrever um template. Para adicionar novos templates à lista, clique no botão adicionar.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string/>

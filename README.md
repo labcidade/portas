@@ -60,7 +60,7 @@ Feito isso, basta baixar os arquivos do PORTAS no seu computador, extraí-los da
 Quando o programa terminar a execução, serão criados um arquivo .portas e um arquivo tabular (.csv ou .xlsx). O arquivo .portas contém todas as informações da sua pesquisa, e pode ser usado para atualizá-la no futuro usando a função "Retomar pesquisa" na interface do PORTAS. Guarde este arquivo, ele é o produto mais importante da raspagem! O arquivo tabular é apenas um fragmento do arquivo .portas, que pode ser usado para visualizar os resultados. É possível extrair um arquivo tabular de um arquivo .portas usando a função "Extrair resultados" na interface do PORTAS. Quando o arquivo tabular é criado em formato .csv, a codificação do arquivo é UTF-8 e o separador é o caractere | (pipe).
 
 ## Especificação das variáveis
-Os arquivos de saída 
+Os arquivos tabulares de saída possuem as seguintes variáveis nas colunas:
 
 |Variável|Fonte|Descrição|
 |---|---|---|

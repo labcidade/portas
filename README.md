@@ -94,7 +94,7 @@ Os arquivos tabulares de saída possuem as seguintes variáveis nas colunas:
 |`Dívida do requerido (R$)`|Mineração de texto|Indica a dívida da parte 2|
 |`Aluguel NA`|Mineração de texto|Aluguel (Se não autenticado)|
 |`Aluguel atualizado NA`|Mineração de texto|Aluguel atualizado (Se não autenticado)|
-|`Dívida do requerido NA`|Mineração de texto|Dívida da parte 1 (Se não autenticada) |
+|`Dívida do requerido NA`|Mineração de texto|Dívida da parte 2 (Se não autenticada) |
 |`Endereço`|Mineração de texto|Endereço do imóvel sub judice|
 |`Sentença`|Mineração de texto|Teor da(s) sentença(s) proferida(s)|
 |`Contagem sentenças`|Mineração de texto|Número de sintagmas de sentença|

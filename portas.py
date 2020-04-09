@@ -814,7 +814,8 @@ def executar(pesquisa):
 
 						u.buscaralvo('RAJ',masterdic['rajs'],u.dic["Comarca"])
 						u.buscaralvo('UTA',masterdic['utas'],u.dic["Foro"])
-						u.buscaralvo('Justiça gratuita',{'Sim':["\nJUSTIÇA GRATUITA\n"]},u.resumo)
+						u.buscaralvo('Justiça gratuita',{"\nJUSTIÇA GRATUITA\n":'Sim'},u.resumo)
+						u.buscaralvo('Prioridade idoso',{"PRIORIDADE IDOSO":"Sim"},u.resumo)
 						u.aluguel()
 						u.endereco()
 						u.sentencas(masterdic['sentencas'])

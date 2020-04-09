@@ -87,7 +87,8 @@ Os arquivos tabulares de saída possuem as seguintes variáveis nas colunas:
 |`Descrição parte 1`|Mineração de texto|Identificador da parte 1 em seu agrupamento|
 |`RAJ`|Mineração de texto|Região Administrativa Judicial do processo|
 |`UTA`|Mineração de texto|Unidade territorial de análise do processo|
-|`Justiça gratuita`|Mineração de texto|Indica se parte 1 usa benefício de gratuidade|
+|`Justiça gratuita`|Mineração de texto|Indica se processo tramita com gratuidade (geralmente à parte 1)|
+|`Prioridade idoso`|Mineração de texto|Indica se processo tramita com prioridade a idosos|
 |`Aluguel (R$)`|Mineração de texto|Indica valor do aluguel pago|
 |`Aluguel atualizado (R$)`|Mineração de texto|Indica valor atualizado do aluguel, se houver|
 |`Dívida do requerido (R$)`|Mineração de texto|Indica a dívida da parte 2|

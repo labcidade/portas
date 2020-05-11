@@ -146,6 +146,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 				self.pesquisa_espelho.clear()
 				self.pesquisa_espelho.insert(d)
 				self.aviso_espelho.hide()
+				self.checar()
 			except:
 				self.aviso_espelho.setText(self.texto_aviso.format('A pasta indicada não possui um arquivo validador!'))
 				self.aviso_espelho.show()

@@ -784,7 +784,11 @@ def executar(pesquisa):
 				if len(itens_na_pagina) == 0:
 					ts = prefixo+'Página '+str(tarefa)+' vazia!'
 					print(ts)
+					cadeado2.acquire()
 					bandeira = True
+					parciais.append('bandeira')
+					cadeado2.release()
+					tarefas.task_done()
 					continue
 
 				# se for a primeira busca, define o primeiro item a partir 
@@ -835,9 +839,9 @@ def executar(pesquisa):
 								u.campovazio("Data distribuição")
 
 							if not u.avancado:
-								cadeado.acquire()
+								cadeado2.acquire()
 								parciais.append('erroavancado')
-								cadeado.release()
+								cadeado2.release()
 
 						cadeado.acquire()
 						matriz.append(u.dic)

@@ -7,4 +7,4 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 print('Instalando/atualizando módulos')
 req = os.path.dirname(os.path.realpath(__file__))+'\\requirements.txt'
-os.system('python -m pip --disable-pip-version-check install -r '+req+' --quiet')
+os.system('python -m pip --disable-pip-version-check install -r "'+req+'" --quiet')

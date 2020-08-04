@@ -80,6 +80,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.anterior = None
 		self.retomada = False
 		self.verurl = ''
+		self.cache = 0
 
 		renome = QtCore.QRegExp('[^/:?|<>*"]{1,}')
 		validanome = QtGui.QRegExpValidator(renome)
@@ -484,6 +485,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.d = {}
 
 	def atualizar_progresso(self, tot):
+		tot = tot + self.cache
 		porc = int((tot*100)/self.meta)
 		self.barraProgresso.setValue(porc)
 		tp = '{} de {} processos registrados'.format(str(tot),str(self.meta))
@@ -550,6 +552,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			p.retomada = True
 			p.original = self.anterior
 			p.indice = int(self.d['indice'])
+			self.cache = p.indice
 			p.ignorados = int(self.d['ignorados'])
 
 		if self.isLimite.isChecked():

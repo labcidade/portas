@@ -24,8 +24,8 @@ Para identificação das expressões regulares a serem utilizadas na criação d
 O PORTAS está organizada com a seguinte estrutura:
 ```
 portas
-├ PORTAS.pyw
-├ portas.py
+├ portas.pyw
+├ lib.py
 ├ dics
 │   └ […]
 ├ templates
@@ -39,15 +39,15 @@ portas
 ├ LICENSE
 └ README.md
 ```
-Para executar o programa, basta clicar no arquivo "PORTAS.pyw". As principais funções, contudo, são executadas pelo arquivo "portas.py". Com intenção de facilitar a compreensão, faremos uma analogia.
-O arquivo "portas.py" funciona como um centro de controle da raspagem. Ele é capaz de executar um objeto-pesquisa configurado conforme suas exigências (que consiste de uma consulta ao Banco de Sentenças com algumas outras variáveis), e retorna os resultados tabulados. 
+Para executar o programa, basta clicar no arquivo "portas.pyw". As principais funções, contudo, são executadas pelo arquivo "lib.py". Com intenção de facilitar a compreensão, faremos uma analogia.
+O arquivo "lib.py" funciona como um centro de controle da raspagem. Ele é capaz de executar um objeto-pesquisa configurado conforme suas exigências (que consiste de uma consulta ao Banco de Sentenças com algumas outras variáveis), e retorna os resultados tabulados. 
 
 *Diagrama simplificado do processo de mineração dos dados*
 ![Diagrama simplificado do processo de mineração dos dados](https://lh3.googleusercontent.com/hAL9P0uy5z4t43Yt343SOz0ib7r-tksX3nDPW6Nk6N7Ae1wg4GfW1cnPdNiAwPjAXdvGEISn2AXWTNGJoP_wUl-x5DVHRoakQLZRFJOy_AYEtcvvJkzH-Tm-fkKqgw0NhUkmTfMZEw=w600)
 
 O script opera em três etapas: configuração, pesquisa e registro. Na etapa de configuração, o script cria objetos necessários para executar o objeto-pesquisa a partir dos arquivos nas pastas "dics" e "templates" e de outras configurações. Esses dados dizem ao script quais são as informações que precisam ser buscadas nos textos das sentenças. Em seguida, na etapa de pesquisa, o script utilizará as configurações especificadas para executar threads. É como se o centro de controle enviasse robôs ao banco de sentenças, com instruções para encontrar informações que correspondam às configurações. O centro de controle enviará um número específico de robôs (definido pelo "número de buscas simultâneas", na interface) e aguardará que todos retornem para prosseguir. O tamanho do ciclo, especificado na interface do PORTAS, determina quantos processos os robôs devem encontrar antes de registrar os resultados. Assim, se os robôs retornarem e o ciclo ainda não estiver completo, eles serão enviados novamente ao Banco de Sentenças. Quando o ciclo é terminado, as informações obtidas pelos robôs é registrada em um aquivo .csv intermediário e em um arquivo de metadados em formato .txt. A execução de uma pesquisa pode precisar de vários ciclos, e o arquivo intermediário será atualizado ao final de cada um deles. Quando todos os ciclos forem terminados, o programa executa a etapa 3. Ela consiste na tradução dos dados do arquivo intermediário e dos metadados em um arquivo .portas de saída. Esse aquivo tem estrutura de arquivo .zip, e contém todas as informações necessárias para retomar a pesquisa: os templates utilizados, as configurações de busca e os resultados tabulados. Também será salvo um arquivo .csv contendo apenas os resultados tabulados, que pode ser aberto em programas como o LibreOffice Calc ou o Microsoft Office Excel.
 
-A função do script "PORTAS.pyw" é simplesmente conectar o script "portas.py" aos arquivos de configuração da primeira etapa, usando para isso uma interface gráfica de usuário.
+A função do script "portas.pyw" é simplesmente conectar o script "lib.py" aos arquivos de configuração da primeira etapa, usando para isso uma interface gráfica de usuário.
 
 O PORTAS foi desenvolvido em linguagem Python 3, e é compatível com o sistema operacional Windows.
 
@@ -55,7 +55,7 @@ O PORTAS foi desenvolvido em linguagem Python 3, e é compatível com o sistema 
 Para executar o PORTAS no seu computador, é necessário ter uma instalação de [Python 3.7](https://www.python.org/downloads/release/python-377/). Lembre-se de selecionar a opção adicionar ao PATH ("Add Python 3.7 to PATH") na caixa de diálogo da instalação. Caso já tenha instalado e/ou se esqueceu desse passo, [aqui](https://www.ownard.com.br/back-end/iniciante-adicionando-python-ao-path-no-windows-10/) você encontra instruções de como fazê-lo manualmente.
 Além disso, é necessário ter uma conexão estável à Internet durante a execução, ou as pesquisas podem ser interrompidas.
 
-Feito isso, basta baixar os arquivos do PORTAS no seu computador, extraí-los da pasta zipada e clicar no arquivo "PORTAS.pyw" para iniciar a execução. Este arquivo abrirá a interface do usuário, que possui instruções de como realizar a pesquisa. Pode ser que o programa demore para ser inicializado, pois serão instalados e verificados alguns requisitos para sua execução. Uma janela preta deve aparecer neste momento. Não a feche, ela indica que o programa está funcionando como esperado. Quando a interface aparecer, basta clicar em "Criar pesquisa" para configurar e executar uma nova raspagem.
+Feito isso, basta baixar os arquivos do PORTAS no seu computador, extraí-los da pasta zipada e clicar no arquivo "portas.pyw" para iniciar a execução. Este arquivo abrirá a interface do usuário, que possui instruções de como realizar a pesquisa. Pode ser que o programa demore para ser inicializado, pois serão instalados e verificados alguns requisitos para sua execução. Uma janela preta deve aparecer neste momento. Não a feche, ela indica que o programa está funcionando como esperado. Quando a interface aparecer, basta clicar em "Criar pesquisa" para configurar e executar uma nova raspagem.
 
 Quando o programa terminar a execução, serão criados um arquivo .portas e um arquivo tabular (.csv ou .xlsx). O arquivo .portas contém todas as informações da sua pesquisa, e pode ser usado para atualizá-la no futuro usando a função "Retomar pesquisa" na interface do PORTAS. Guarde este arquivo, ele é o produto mais importante da raspagem! O arquivo tabular é apenas um fragmento do arquivo .portas, que pode ser usado para visualizar os resultados. É possível extrair um arquivo tabular de um arquivo .portas usando a função "Extrair resultados" na interface do PORTAS. Quando o arquivo tabular é criado em formato .csv, a codificação do arquivo é UTF-8 e o separador é o caractere | (pipe).
 

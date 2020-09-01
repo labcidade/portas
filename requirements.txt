@@ -2,4 +2,6 @@ BeautifulSoup4==4.6.3
 PyQt5==5.14.1
 PyQtWebEngine==5.14.0
 requests
+openpyxl
+xlrd
 pandas==0.23.4

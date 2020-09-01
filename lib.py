@@ -197,7 +197,7 @@ def _contar_resultados(url_base):
 # troca arquivo csv do portas por xlsx
 def _trocar_csv(arq_csv):
 	assert arq_csv.endswith('.csv')
-	df = pandas.read_csv(arq_csv,encoding='utf-8',sep='|')
+	df = pandas.read_csv(arq_csv,encoding='utf-8',sep='|',engine='python')
 	writer = pandas.ExcelWriter(arq_csv.replace('.csv','.xlsx'))
 	df.to_excel(writer,index = False)
 	writer.save()
@@ -288,6 +288,13 @@ class itemregistro:
 		else:
 			self.completo =	False
 
+		y = self.dic["Processo"][11:15]
+		try:
+			y2 = int(y)
+			assert y2>1900
+			self.dic['Ano etiqueta'] = y2
+		except:
+			self.dic['Ano etiqueta'] = ''
 		self.resumo = self.dados[-1].find_all("span")[-1].get_text().upper()
 		self.dic["Caracteres sentença"] = len(self.resumo.replace("\n","").replace("\t",""))
 		self.dic["Palavras sentença"] = self.resumo.count(" ") + self.resumo.count("\n")
@@ -366,7 +373,7 @@ class itemregistro:
 		if 'DESPEJO' in self.dic['Classe'].upper() and cont_reais>0:
 						
 			# procura valores de aluguel
-			for frase in ['ALUGUEL MENSAL','MENSAL','VALOR DO ALUGUEL','VALOR ATUAL DO ALUGUEL']:
+			for frase in ['ALUGUEL MENSAL','MENSAL','VALOR DO ALUGUEL','VALOR ATUAL DO ALUGUEL','VALOR MENSAL', 'VALOR MENSAL DO ALUGUEL']:
 				if frase in self.resumo:
 					trechos = [a.split(',')[0] for a in self.resumo.split(frase)]
 					trechos_seg = [a.split(',')[1] for a in self.resumo.split(frase)]
@@ -607,7 +614,7 @@ def executar(pesquisa):
 	print('[portas] Iniciando execução')
 	# variáveis de execução
 	tamanho_fila = pesquisa.ciclo//10
-	timeout = pesquisa.robos * 90	
+	timeout = pesquisa.robos * 120	
 	contagem = ignorados = 0
 
 	# providencia nome do arquivo
@@ -662,6 +669,7 @@ def executar(pesquisa):
 		d = _ler_dic(os.path.join(_dics,d))
 		masterdic[nome] = d
 
+	print('[portas] Procurando templates')
 	mastercustom = {}
 	if pesquisa.dics:
 		for d in os.listdir(pesquisa.dics):
@@ -672,9 +680,10 @@ def executar(pesquisa):
 		mastercustom = None
 
 	# avalia se há pesquisa fantasma
+	print('[portas] Calculando teto de resultados')
 	tentativas = []
 	proctot = 0
-	while len(tentativas) < 20:
+	while len(tentativas) <= 50:
 		s = requests.Session()
 		r = s.get(pesquisa.url)
 		s.close()
@@ -747,12 +756,15 @@ def executar(pesquisa):
 							
 								tottentativa = _achar_proctot(pag_soup)
 								if tottentativa < proctot:
+									agora = datetime.datetime.now()
+									if (agora-partida).total_seconds() > timeout:
+										itens_na_pagina = 1
+										break
 									continue
 								else:
+									itens_na_pagina = [a for a in pag_soup.find_all("tr",{"class":"fundocinza1"})[:10]]
 									break
 
-							itens_na_pagina = [a for a in pag_soup.find_all("tr",{"class":"fundocinza1"})[:10]]
-						
 							# salva os dados da página
 							_t, _u, _f = shutil.disk_usage('/')
 							if pesquisa.espelho and _f//(2**30) > 1 and len(itens_na_pagina) > 0:
@@ -765,18 +777,21 @@ def executar(pesquisa):
 					except AssertionError:
 						agora = datetime.datetime.now()
 						if (agora-partida).total_seconds() > timeout:
-							itens_na_pagina = None
+							itens_na_pagina = 2
 							break
 						else:
 							continue
 
 				# checa se página tem conteúdo
-				if type(itens_na_pagina) != list:
+				if itens_na_pagina == 2:
 					ts = prefixo+'\nO servidor levou tempo demais para responder. A execução será terminada em breve.\n'
 					print(ts)
 					cadeado2.acquire()
 					parciais.append('terminar')
 					cadeado2.release()
+					tarefas.task_done()
+					continue
+				elif itens_na_pagina == 1:
 					tarefas.task_done()
 					continue
 
@@ -939,7 +954,8 @@ def executar(pesquisa):
 				print('[portas] TODOS OS DADOS DISPONÍVEIS FORAM RASPADOS!')
 				break
 
-			yield contagem
+			registros = pesquisa.indice + contagem
+			yield [registros,proctot]
 			c += 1
 
 	finally:

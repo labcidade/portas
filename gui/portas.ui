@@ -182,7 +182,7 @@
          <bool>true</bool>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#999999;&quot;&gt;versão 2020.1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#999999;&quot;&gt;versão 2020.2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -1374,7 +1374,7 @@
      <x>0</x>
      <y>0</y>
      <width>790</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="tabletTracking">

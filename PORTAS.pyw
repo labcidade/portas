@@ -14,7 +14,7 @@ import time
 import shutil
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-import portas
+import lib as portas
 
 ico = 'gui/icone_martelo.ico'
 
@@ -32,7 +32,7 @@ Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
 
 # thread de execução, separado da interface
 class progressThread(QtCore.QThread):
-	progress_update = QtCore.pyqtSignal(int)
+	progress_update = QtCore.pyqtSignal(list)
 
 	def __init__(self,gen):
 		QtCore.QThread.__init__(self)
@@ -80,7 +80,7 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.anterior = None
 		self.retomada = False
 		self.verurl = ''
-		self.cache = 0
+		self.meta = None
 
 		renome = QtCore.QRegExp('[^/:?|<>*"]{1,}')
 		validanome = QtGui.QRegExpValidator(renome)
@@ -422,7 +422,6 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.fazer.setEnabled(False)
 		dir_out = self.pesquisa_arq.text()
 		basename = self.pesquisa_nome.text() + '_resultados'
-
 		rivais = os.listdir(dir_out)
 		csv_rivais = [x.replace('.csv','') \
 			for x in rivais if x.endswith('.csv')]
@@ -432,7 +431,6 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		lc = len(csv_rivais)
 		if basename + '.csv' in os.listdir(dir_out):
 			lc += 1
-		
 		if lc == 0:
 			sufixo = '.csv'
 		else:
@@ -482,13 +480,17 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.nciclo.setValue(500)
 		self.meta = 0
 		self.anterior = None
+		self.meta = None
 		self.d = {}
 
 	def atualizar_progresso(self, tot):
-		tot = tot + self.cache
-		porc = int((tot*100)/self.meta)
+		if self.meta:
+			x = self.meta
+		else:
+			x = tot[1]
+		porc = int((tot[0]*100)/x)
 		self.barraProgresso.setValue(porc)
-		tp = '{} de {} processos registrados'.format(str(tot),str(self.meta))
+		tp = '{} de {} processos registrados'.format(str(tot[0]),str(x))
 		print(tp)
 		self.progresso.setText(tp)
 
@@ -520,14 +522,6 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 		self.progresso.show()
 		self.progresso.setText('Checando URL...')
 		p = portas.pesquisa()
-		
-		self.meta = portas._contar_resultados(self.pesquisa_url.text())
-
-		if not self.meta:
-			self.progresso.hide()
-			self.reset()
-			self.erro.show()	
-			return
 
 		# trava elementos
 		self.box_pesquisa.setEnabled(False)
@@ -552,7 +546,6 @@ class PortasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 			p.retomada = True
 			p.original = self.anterior
 			p.indice = int(self.d['indice'])
-			self.cache = p.indice
 			p.ignorados = int(self.d['ignorados'])
 
 		if self.isLimite.isChecked():

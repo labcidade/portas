@@ -105,11 +105,14 @@ Os templates são conjuntos de variáveis que podem ser incluídas e excluídas 
 
 |Template|Variável|Descrição|
 |---|---|---|
-|labcidade|`Ambiental`|Indica se há sintagma de infração ambiental|
-|labcidade|`Imobiliário`|Indica se há sintagma imobiliária|
-|labcidade|`Invasão`|Indica se há sintagma sobre invasão|
-|labcidade|`Sublocação`|Indica se há sintagma sobre sublocação|
-|labcidade|`Uso imóvel`|Indica grupo de uso do imóvel sub judice|
+|labcidade, labcidade covid|`Ambiental`|Indica se há sintagma de infração ambiental|
+|labcidade, labcidade covid|`Imobiliário`|Indica se há sintagma imobiliária|
+|labcidade, labcidade covid|`Invasão`|Indica se há sintagma sobre invasão|
+|labcidade, labcidade covid|`Sublocação`|Indica se há sintagma sobre sublocação|
+|labcidade, labcidade covid|`Uso imóvel`|Indica grupo de uso do imóvel sub judice|
+|labcidade, labcidade covid|`ZEIS`|Indica menção a Zonas Especiais de Interesse Social|
+|labcidade covid|`Auxílio emergencial`|Indica menção a auxílio emergencial|
+|labcidade covid|`Covid-19`|Indica vocabulário relacionado à pandemia de Covid-19|
 
 Os templates consistem de uma pasta contendo exclusivamente arquivos de texto com o formato padrão do PORTAS. Para criar um template, primeiro crie uma nova pasta no seu computador. O nome dessa pasta será o nome do novo template. Em seguida, alimenta-se essa pasta com os arquivos de texto padronizados.
 

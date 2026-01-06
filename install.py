@@ -8,7 +8,8 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 print('Instalando/atualizando módulos')
 req = os.path.dirname(os.path.realpath(__file__))+'\\requirements.txt'
 
-for v in ('python37','python'):
+versao = 'python'
+for v in ('python37','pythoncom'):
 	t = os.system(v+' -m pip')
 	if t == 0:
 		versao = v

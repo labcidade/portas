@@ -8,7 +8,7 @@ import os
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 # importa módulos
-import install
+# import install
 import sys
 import time
 import shutil
